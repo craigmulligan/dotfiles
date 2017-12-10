@@ -100,3 +100,10 @@ alias todo="todo-txt"
 if which ack-grep >/dev/null; then
   alias ack="ack-grep"
 fi
+##################################################
+# Settings
+##################################################
+
+# vim mode
+
+bindkey -v
