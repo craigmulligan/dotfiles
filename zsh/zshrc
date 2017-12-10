@@ -95,7 +95,7 @@ plugins=(
 
 alias reload="source $HOME/.zshrc"
 alias ll="ls -l"
-alias todo="todo.sh"
+alias todo="todo-txt"
 
 if which ack-grep >/dev/null; then
   alias ack="ack-grep"
