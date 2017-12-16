@@ -143,7 +143,7 @@ inoremap <Esc> <nop>
 inoremap Jk <Esc>
 
 " Map Leader key
-let mapleader = "\\"
+let mapleader = "-"
 let maplocalleader = ","
 
 "=========================================================================
@@ -249,9 +249,9 @@ command! MarksToggle set list!
 
 function! SetFont(size)
   if has("gui_macvim")
-    execute ':set guifont=Monaco:h' . a:size 
+    execute ':set guifont=Monaco:h' . a:size
   elseif has("gui_gtk2")
-    execute ':set guifont=Ubuntu\ Mono\ ' . a:size 
+    execute ':set guifont=Ubuntu\ Mono\ ' . a:size
   elseif has("gui_win32")
 
     " Font displays larger than usual on Windows
@@ -512,7 +512,7 @@ noremap agq ggvGgq
 
 augroup autowrap
   autocmd!
-  
+
   " Auto-wrap at 72 in Mutt mail
   autocmd FileType mail setlocal textwidth=72
   autocmd FileType mail setlocal wrap
