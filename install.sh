@@ -4,9 +4,10 @@ apt-get update && apt-get install git make curl zsh vim-gnome python nodejs npm 
 # Install docker
 sh -c "$(curl -sSL https://get.docker.com/)"
 
-# oh-my-zsh 
+# oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 npm i -g yarn n
+yarn global add gratitude
 # Install nightly node v
 n latest
