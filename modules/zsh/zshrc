@@ -110,9 +110,11 @@ bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
 export EDITOR=vim
 
-
 ##################################################
 # Gratitude - https://github.com/hobochild/gratitude
 ##################################################
 
 gratitude
+
+# added by travis gem
+[ -f /home/hobochild/.travis/travis.sh ] && source /home/hobochild/.travis/travis.sh

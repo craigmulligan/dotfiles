@@ -7,6 +7,18 @@ set nocompatible
 
 call plug#begin('~/.vim/plugged')
 
+" Syntax highlighting "
+Plug 'vim-syntastic/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+
 " -- NERDTree --
 Plug 'scrooloose/nerdtree'
 noremap <C-z> :NERDTreeToggle<CR>
@@ -65,18 +77,18 @@ let coffee_run_vert = 1
 let coffee_watch_vert = 1
 
 call plug#end()
-
+"
 "=========================================================================
-" $SETTINGS
+" $settings
 "=========================================================================
 
-" Auto read changed files
+" auto read changed files
 set autoread
 
-" Update time (time that vim waites before triggering plugins)
+" update time (time that vim waites before triggering plugins)
 set updatetime=500
 
-" Set encoding
+" set encoding
 set encoding=utf-8
 
 " Set correct `term` for cmder
