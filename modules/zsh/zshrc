@@ -58,9 +58,17 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+##################################################
+# Settings
+##################################################
+
+# vim mode
+
+export EDITOR=vim
+
+
 plugins=(
   git
-  zsh-history-substring-search
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -98,19 +106,9 @@ alias reload="source $HOME/.zshrc"
 alias ll="ls -l"
 alias todo="todo-txt"
 
-if which ack-grep >/dev/null; then
+if which ack-grep > /dev/null; then
   alias ack="ack-grep"
 fi
-##################################################
-# Settings
-##################################################
-
-# vim mode
-bindkey -v
-bindkey '\e[A' history-beginning-search-backward
-bindkey '\e[B' history-beginning-search-forward
-export EDITOR=vim
-
 ##################################################
 # Gratitude - https://github.com/hobochild/gratitude
 ##################################################
