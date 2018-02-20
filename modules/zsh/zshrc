@@ -106,17 +106,18 @@ alias reload="source $HOME/.zshrc"
 alias ll="ls -l"
 alias todo="todo-txt"
 
-if which ack-grep > /dev/null; then
-  alias ack="ack-grep"
-fi
+# added by travis gem
+[ -f /home/hobochild/.travis/travis.sh ] && source /home/hobochild/.travis/travis.sh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# Make sure yarn's global dir findable
+export PATH="$(yarn global bin):$PATH"
+
 ##################################################
 # Gratitude - https://github.com/hobochild/gratitude
 ##################################################
 
 gratitude
 
-# added by travis gem
-[ -f /home/hobochild/.travis/travis.sh ] && source /home/hobochild/.travis/travis.sh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
