@@ -36,7 +36,7 @@
 	template = ~/.gitdefaultcommit
 [merge]
 	tool = vimdiff
-	conflictstyle = diff3
+	conflictstyle = merge
 [diff "hex"]
 	textconv = hexdump
 	binary = true
