@@ -7,6 +7,7 @@
 	name = Craig Mulligan
 	email = hobochildster@gmail.com
 	username = hobochild
+	signingkey = 44D418285D084960094D5731C76017DBB450A7C2
 [color]
 	ui = true
 [push]
@@ -34,6 +35,7 @@
 	authors = "!f() { git log --all --format='%aN <%cE>' | sort -u; }; f"
 [commit]
 	template = ~/.gitdefaultcommit
+	gpgsign = true
 [merge]
 	tool = vimdiff
 	conflictstyle = merge
