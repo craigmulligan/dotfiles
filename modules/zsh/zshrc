@@ -99,9 +99,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-git config --global commit.gpgsign true
-git config --global user.signingkey 44D418285D084960094D5731C76017DBB450A7C2
-
 ##################################################
 # Aliases
 ##################################################
