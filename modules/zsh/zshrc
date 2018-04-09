@@ -73,6 +73,9 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+### BASIS DEV ###
+export BASIS_DEPLOY=~/Play/basis-deploy
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -107,6 +110,8 @@ alias reload="source $HOME/.zshrc"
 alias ll="ls -l"
 alias todo="todo-txt"
 alias tele="telepresence"
+alias venv="virtualenv venv"
+alias activate="source venv/bin/activate"
 
 # added by travis gem
 [ -f /home/hobochild/.travis/travis.sh ] && source /home/hobochild/.travis/travis.sh
@@ -118,6 +123,7 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$(yarn global bin):$PATH"
 
 bindkey -v
+
 ##################################################
 # Gratitude - https://github.com/hobochild/gratitude
 ##################################################
