@@ -1,5 +1,7 @@
 # Deps
-apt-get update && apt-get install git make curl zsh vim-gnome python nodejs npm docker jq mutt tmux w3m todotxt-cli ispell urlview offlineimap msmtp linux-image-extra-$(uname -r) linux-image-extra-virtual
+apt-get update && apt-get install git make curl zsh vim-gnome python nodejs npm docker jq mutt tmux w3m todotxt-cli ispell urlview offlineimap msmtp linux-image-extra-$(uname -r) linux-image-extra-virtual tmux
+
+git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
 
 # Install docker
 sh -c "$(curl -sSL https://get.docker.com/)"
