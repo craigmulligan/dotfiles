@@ -112,6 +112,7 @@ alias todo="todo-txt"
 alias tele="telepresence"
 alias venv="virtualenv venv"
 alias activate="source venv/bin/activate"
+alias sesh="tmux new-session -s"
 
 # added by travis gem
 [ -f /home/hobochild/.travis/travis.sh ] && source /home/hobochild/.travis/travis.sh
