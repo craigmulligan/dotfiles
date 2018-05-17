@@ -42,7 +42,6 @@ augroup END
 Plug 'scrooloose/nerdcommenter'
 let NERDSpaceDelims=1
 let NERDCommentWholeLinesInVMode=2
-let NERDTreeWinSize = 1
 
 " -- SyntaxAttr --
 Plug 'vim-scripts/SyntaxAttr.vim'
