@@ -112,6 +112,8 @@ alias sesh="tmux new-session -s"
 
 # Make sure yarn's global dir findable
 export PATH="$(yarn global bin):$PATH"
+# Make sure pipenv global dir is findable
+export PATH="${HOME}/.local/bin:$PATH"
 
 bindkey -v
 
