@@ -16,3 +16,8 @@ npm i -g yarn n
 yarn global add gratitude
 # Install nightly node v
 n latest
+
+# https://askubuntu.com/questions/715104/how-can-i-downgrade-openssl-via-apt-get?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+# Downgrade openssl to version 1.0.x
+wget https://launchpad.net/~ubuntu-security/+archive/ubuntu/ppa/+build/7531893/+files/openssl_1.0.1-4ubuntu5.31_amd64.deb
+sudo dpkg -i openssl_1.0.1-4ubuntu5.31_amd64.deb
