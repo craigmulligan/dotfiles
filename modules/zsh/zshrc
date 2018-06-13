@@ -106,6 +106,7 @@ alias tele="telepresence"
 alias venv="virtualenv venv"
 alias activate="source venv/bin/activate"
 alias sesh="tmux new-session -s"
+alias kop='function _kill_on_port(){ fuser -k $1/tcp };_kill_on_port'
 
 # added by travis gem
 [ -f /home/hobochild/.travis/travis.sh ] && source /home/hobochild/.travis/travis.sh
