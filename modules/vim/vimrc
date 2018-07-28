@@ -77,6 +77,7 @@ Plug 'editorconfig/editorconfig-vim'
 
 " -- VimTmuxNavigator
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'tpope/vim-surround'
 
 " Language Specific Syntax
 Plug 'elzr/vim-json'
@@ -85,8 +86,9 @@ Plug 'leafgarland/typescript-vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'kchmck/vim-coffee-script'
 Plug 'jparise/vim-graphql'
-
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'flowtype/vim-flow'
+
 let g:flow#autoclose = 1
 
 let coffee_compile_vert = 1
