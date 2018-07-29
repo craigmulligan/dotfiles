@@ -115,6 +115,7 @@ alias kop='function _kill_on_port(){ fuser -k $1/tcp };_kill_on_port'
 export PATH="$(yarn global bin):$PATH"
 # Make sure pipenv global dir is findable
 export PATH="${HOME}/.local/bin:$PATH"
+export PATH=$PATH:/usr/local/go/bin
 
 bindkey -v
 
