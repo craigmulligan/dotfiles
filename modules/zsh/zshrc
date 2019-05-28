@@ -68,7 +68,7 @@ export EDITOR=vim
 plugins=(
   git
   history-substring-search
-  zsh-complettions
+  zsh-completions
 )
 
 autoload -U compinit && compinit
@@ -107,6 +107,11 @@ alias venv="virtualenv venv"
 alias activate="source venv/bin/activate"
 alias sesh="tmux new-session -s"
 alias kop='function _kill_on_port(){ fuser -k $1/tcp };_kill_on_port'
+alias psql_test="psql 'sslmode=verify-ca sslrootcert=/home/hobochild/test-db/server-ca.pem \
+    sslcert=/home/hobochild/test-db/client-cert.pem sslkey=/home/hobochild/test-db/client-key.pem \
+    hostaddr=35.197.243.109 \
+    user=postgres
+    dbname=bike'"
 
 # added by travis gem
 [ -f /home/hobochild/.travis/travis.sh ] && source /home/hobochild/.travis/travis.sh
@@ -116,6 +121,8 @@ export PATH="$(yarn global bin):$PATH"
 # Make sure pipenv global dir is findable
 export PATH="${HOME}/.local/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin/google-cloud-sdk/bin:$PATH"
 
 bindkey -v
 
@@ -125,14 +132,23 @@ bindkey -v
 
 # gratitude
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/hobochild/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/home/hobochild/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/hobochild/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/hobochild/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
 ##################################################
 # Auto compeletions
 ##################################################
 source <(pipenv --completion)
 source <(kubectl completion zsh)
+
+## android studio
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/usr/local/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/usr/local/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/completion.zsh.inc'; fi

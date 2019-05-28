@@ -12,6 +12,7 @@ Plug 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+set pyxversion=3
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
@@ -23,7 +24,7 @@ let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 Plug 'scrooloose/nerdtree'
 noremap <C-z> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['.DS_Store', '.git', '*.o', 'npm-debug.log*']
+let NERDTreeIgnore=['.DS_Store', '.git', '*.o', 'npm-debug.log*', '*.pyc']
 let NERDTreeAutoDeleteBuffer=1
 
 function! NERDTreeCloseIfLastWindow()
@@ -66,11 +67,13 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#semi = 'false'
-
-"Run before saving with all files even without @format tag"
-let g:prettier#autoformat = 0
+let g:prettier#config#config_precedence = 'file-override'
 
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
+" -- fuzzy search -- "
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " -- EditorConfig support --
 Plug 'editorconfig/editorconfig-vim'
@@ -82,18 +85,39 @@ Plug 'tpope/vim-surround'
 " Language Specific Syntax
 Plug 'elzr/vim-json'
 Plug 'rust-lang/rust.vim'
+
 Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
+
 Plug 'jelera/vim-javascript-syntax'
 Plug 'kchmck/vim-coffee-script'
 Plug 'jparise/vim-graphql'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'flowtype/vim-flow'
-
 let g:flow#autoclose = 1
+Plug 'nvie/vim-flake8'
+let g:flake8_show_in_gutter = 1
+Plug 'tell-k/vim-autopep8'
+let g:autopep8_on_save = 1
+let g:autopep8_disable_show_diff=1
 
-let coffee_compile_vert = 1
-let coffee_run_vert = 1
-let coffee_watch_vert = 1
+Plug 'reasonml-editor/vim-reason-plus'
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+" the path to python3 is obtained through executing `:echo exepath('python3')` in vim
+let g:python3_host_prog = "/usr/bin/python3"
+
+let g:LanguageClient_serverCommands = {
+    \ 'reason': ['/usr/local/bin/reason-language-server.exe']
+    \ }
+let g:deoplete#enable_at_startup = 1
 
 call plug#end()
 "
@@ -569,6 +593,8 @@ set nospell
   " Only enable spellcheck on Markdown
   " autocmd FileType markdown setlocal spell spelllang=en
 " augroup END
+"
+"
 
 "=========================================================================
 " $INDENTATION

@@ -1,5 +1,5 @@
 # Deps
-apt-get update && apt-get install git make curl zsh vim-gnome python nodejs npm docker jq mutt tmux w3m todotxt-cli ispell urlview offlineimap msmtp linux-image-extra-$(uname -r) linux-image-extra-virtual tmux
+apt-get update && apt-get install git make curl zsh vim-gnome python nodejs npm docker jq mutt tmux w3m todotxt-cli ispell urlview offlineimap msmtp linux-image-extra-$(uname -r) linux-image-extra-virtual tmux silversearcher-ag
 
 git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
 
