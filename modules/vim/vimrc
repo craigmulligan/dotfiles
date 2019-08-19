@@ -4,7 +4,6 @@ set nocompatible
 "=========================================================================
 " $PLUGINS
 "=========================================================================
-
 call plug#begin('~/.vim/plugged')
 
 " Syntax highlighting "
@@ -24,7 +23,7 @@ let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 Plug 'scrooloose/nerdtree'
 noremap <C-z> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['.DS_Store', '.git', '*.o', 'npm-debug.log*', '*.pyc']
+let NERDTreeIgnore=['.DS_Store', '.git', '*.o', 'npm-debug.log*', '\.pyc$']
 let NERDTreeAutoDeleteBuffer=1
 
 function! NERDTreeCloseIfLastWindow()
@@ -85,6 +84,7 @@ Plug 'tpope/vim-surround'
 " Language Specific Syntax
 Plug 'elzr/vim-json'
 Plug 'rust-lang/rust.vim'
+Plug 'jdonaldson/vaxe'
 
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
@@ -98,7 +98,7 @@ let g:flow#autoclose = 1
 Plug 'nvie/vim-flake8'
 let g:flake8_show_in_gutter = 1
 Plug 'tell-k/vim-autopep8'
-let g:autopep8_on_save = 1
+let g:autopep8_on_save = 0
 let g:autopep8_disable_show_diff=1
 
 Plug 'reasonml-editor/vim-reason-plus'
