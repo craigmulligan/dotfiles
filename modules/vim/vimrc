@@ -238,17 +238,12 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
 " the path to python3 is obtained through executing `:echo exepath('python3')` in vim
 let g:python3_host_prog = "/usr/bin/python3"
 
 let g:LanguageClient_serverCommands = {
     \ 'reason': ['/usr/local/bin/reason-language-server.exe']
     \ }
-let g:deoplete#enable_at_startup = 1
 
 call plug#end()
 "
@@ -329,8 +324,8 @@ inoremap <Esc> <nop>
 inoremap Jk <Esc>
 
 " Map Leader key
-let mapleader = "-"
-let maplocalleader = ","
+let mapleader = ","
+let maplocalleader = "-"
 
 "=========================================================================
 " $FILETYPE
@@ -394,7 +389,10 @@ set complete-=i
 "=========================================================================
 
 " Copy-paste friendly
-set clipboard=unnamed
+noremap <Leader>y "+y
+noremap <Leader>p "+p
+noremap <Leader>Y "*y
+noremap <Leader>P "*p
 
 "=========================================================================
 " $MOUSE

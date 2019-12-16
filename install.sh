@@ -19,6 +19,7 @@ sudo apt-get update && \
   msmtp \
   tmux \
   xclip
+  vim-gtk
 
 git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
 
