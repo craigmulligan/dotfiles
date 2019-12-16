@@ -125,6 +125,8 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/bin/google-cloud-sdk/bin:$PATH"
 
 bindkey -v
+# Make the escape mode the same as in vim.
+bindkey jk vi-cmd-mode
 
 ##################################################
 # Gratitude - https://github.com/hobochild/gratitude
@@ -135,7 +137,6 @@ bindkey -v
 ##################################################
 # Auto compeletions
 ##################################################
-source <(pipenv --completion)
 source <(kubectl completion zsh)
 
 ## android studio
