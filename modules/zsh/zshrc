@@ -101,17 +101,12 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 alias reload="source $HOME/.zshrc"
 alias ll="ls -l"
-alias todo="todo-txt"
 alias tele="telepresence"
 alias venv="virtualenv venv"
 alias activate="source venv/bin/activate"
 alias sesh="tmux new-session -s"
 alias kop='function _kill_on_port(){ fuser -k $1/tcp };_kill_on_port'
-alias psql_test="psql 'sslmode=verify-ca sslrootcert=/home/hobochild/test-db/server-ca.pem \
-    sslcert=/home/hobochild/test-db/client-cert.pem sslkey=/home/hobochild/test-db/client-key.pem \
-    hostaddr=35.197.243.109 \
-    user=postgres
-    dbname=bike'"
+alias xclip='xclip -sel clip'
 
 # added by travis gem
 [ -f /home/hobochild/.travis/travis.sh ] && source /home/hobochild/.travis/travis.sh
@@ -123,6 +118,8 @@ export PATH="${HOME}/.local/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/bin/google-cloud-sdk/bin:$PATH"
+export GOPATH="${HOME}/Code/go"
+export PATH="${GOPATH}/bin:$PATH"
 
 bindkey -v
 # Make the escape mode the same as in vim.

@@ -1,0 +1,25 @@
+set realname = "Craig Mulligan"
+set from = "hobochildster@gmail.com"
+set use_from = yes
+set envelope_from = yes
+
+set smtp_url = "smtps://hobochildster@gmail.com@smtp.gmail.com:465/"
+set smtp_pass = "*"
+set imap_user = "hobochildster@gmail.com"
+set imap_pass = ""
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set ssl_force_tls = yes
+
+set folder = imaps://imap.gmail.com/
+set spoolfile = +INBOX
+set record = "+[Gmail]/Sent Mail"
+set postponed = "+[Gmail]/Drafts"
+
+# G to get mail
+bind index G imap-fetch-mail
+set editor = "vim"
+set charset = "utf-8"
+set record = ''
+
+auto_view text/html
