@@ -4,9 +4,9 @@ set use_from = yes
 set envelope_from = yes
 
 set smtp_url = "smtps://hobochildster@gmail.com@smtp.gmail.com:465/"
-set smtp_pass = "*"
+set smtp_pass = `lpass show --password 1088996895607968294`
 set imap_user = "hobochildster@gmail.com"
-set imap_pass = ""
+set imap_pass = `lpass show --password 1088996895607968294`
 set folder = "imaps://imap.gmail.com:993"
 set spoolfile = "+INBOX"
 set ssl_force_tls = yes

@@ -30,7 +30,8 @@ sudo apt-get update && \
   docker-ce \
   docker-ce-cli \
   containerd.io \
-  silversearcher-ag
+  silversearcher-ag \
+  lastpass-cli
 
 git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
 
