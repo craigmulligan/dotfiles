@@ -201,8 +201,6 @@ let g:prettier#config#config_precedence = 'file-override'
 
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
-" -- fuzzy search -- "
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " -- EditorConfig support --
 Plug 'editorconfig/editorconfig-vim'
@@ -243,6 +241,9 @@ let g:python3_host_prog = "/usr/bin/python3"
 let g:LanguageClient_serverCommands = {
     \ 'reason': ['/usr/local/bin/reason-language-server.exe']
     \ }
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 "
