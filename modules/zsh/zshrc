@@ -144,10 +144,18 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/usr/local/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/completion.zsh.inc'; fi
+
+vi-append-x-selection () { RBUFFER=$(xclip -o </dev/null)$RBUFFER; }
+zle -N vi-append-x-selection
+bindkey -a '^X' vi-append-x-selection
+vi-yank-x-selection () { print -rn -- $CUTBUFFER | xclip -sel clip; }
+zle -N vi-yank-x-selection
+bindkey -a '^Y' vi-yank-x-selection
+
