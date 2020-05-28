@@ -206,7 +206,6 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 Plug 'editorconfig/editorconfig-vim'
 
 " -- VimTmuxNavigator
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
 
 " Language Specific Syntax
@@ -474,15 +473,6 @@ set number
 set relativenumber
 
 "=========================================================================
-" $PAIRS
-"=========================================================================
-
-" Surround current word with quotes
-nnoremap <Leader>" viw<esc>a"<esc>hbi"<esc>lel
-nnoremap <Leader>' viw<esc>a'<esc>hbi'<esc>lel
-nnoremap <Leader>` viw<esc>a`<esc>hbi`<esc>lel
-
-"=========================================================================
 " $SEARCH
 "=========================================================================
 
@@ -723,8 +713,6 @@ set nospell
   " autocmd FileType markdown setlocal spell spelllang=en
 " augroup END
 "
-"
-
 "=========================================================================
 " $INDENTATION
 "=========================================================================
@@ -825,16 +813,6 @@ command! WQ wq
 command! Q q
 
 "=========================================================================
-" $VIMRC
-"=========================================================================
-
-" Source vimrc
-nnoremap <Leader>sv :source $MYVIMRC<cr>
-
-" Edit vimrc in a new tab
-nnoremap <Leader>ev :tabe $MYVIMRC<cr>
-
-"=========================================================================
 " $UTILITIES
 "=========================================================================
 
@@ -849,7 +827,6 @@ nnoremap <Leader>k ddkP
 "=========================================================================
 
 if !has("gui_running")
-
   " Fix slow redraws in terminal vim
   " http://www.atomaka.com/blog/slow-redraws-in-vim-terminal-edition/
   set lazyredraw

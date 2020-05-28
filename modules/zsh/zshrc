@@ -62,7 +62,6 @@ ZSH_THEME="robbyrussell"
 ##################################################
 
 # vim mode
-
 export EDITOR=vim
 
 plugins=(
@@ -74,10 +73,6 @@ plugins=(
 autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
-
-### BASIS DEV ###
-export BASIS_DEPLOY=~/Play/basis-deploy
-export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -104,7 +99,6 @@ alias ll="ls -l"
 alias tele="telepresence"
 alias venv="virtualenv venv"
 alias activate="source venv/bin/activate"
-alias sesh="tmux new-session -s"
 alias kop='function _kill_on_port(){ fuser -k $1/tcp };_kill_on_port'
 alias xclip='xclip -sel clip'
 alias pom="sleep 2500 && zenity --warning --text='25 minutes passed'"
@@ -112,14 +106,10 @@ alias pom="sleep 2500 && zenity --warning --text='25 minutes passed'"
 # added by travis gem
 [ -f /home/hobochild/.travis/travis.sh ] && source /home/hobochild/.travis/travis.sh
 
-# Make sure yarn's global dir findable
-export PATH="$(yarn global bin):$PATH"
 # Make sure pipenv global dir is findable
 export PATH="${HOME}/.local/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/bin/google-cloud-sdk/bin:$PATH"
-export GOPATH="${HOME}/Code/go"
+export GOPATH="${HOME}/Play/go"
 export PATH="${GOPATH}/bin:$PATH"
 
 bindkey -v
@@ -127,24 +117,14 @@ bindkey -v
 bindkey jk vi-cmd-mode
 
 ##################################################
-# Gratitude - https://github.com/hobochild/gratitude
-##################################################
-
-# gratitude
-
-##################################################
 # Auto compeletions
 ##################################################
-source <(kubectl completion zsh)
-
 ## android studio
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/path.zsh.inc'; fi
@@ -158,4 +138,3 @@ bindkey -a '^X' vi-append-x-selection
 vi-yank-x-selection () { print -rn -- $CUTBUFFER | xclip -sel clip; }
 zle -N vi-yank-x-selection
 bindkey -a '^Y' vi-yank-x-selection
-
