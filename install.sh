@@ -34,4 +34,8 @@ git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
+# Global node modules
+sudo npm i --global eslint
+
 sudo groupadd docker && sudo usermod -aG docker $USER
+

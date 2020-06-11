@@ -6,19 +6,6 @@ set nocompatible
 "=========================================================================
 call plug#begin('~/.vim/plugged')
 
-" Syntax highlighting "
-Plug 'vim-syntastic/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-set pyxversion=3
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'npm run lint --'
-
 " -- NERDTree --
 Plug 'scrooloose/nerdtree'
 noremap <C-z> :NERDTreeToggle<CR>
@@ -174,6 +161,7 @@ Plug 'scrooloose/nerdcommenter'
 let NERDSpaceDelims=1
 let NERDCommentWholeLinesInVMode=2
 
+
 " -- SyntaxAttr --
 Plug 'vim-scripts/SyntaxAttr.vim'
 command! SyntaxAttr call SyntaxAttr()
@@ -192,7 +180,7 @@ Plug 'airblade/vim-gitgutter'
 let g:gitgutter_max_signs = 500
 
 " -- prettier -- "
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#single_quote = 'true'
@@ -206,6 +194,9 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 Plug 'editorconfig/editorconfig-vim'
 
 " -- VimTmuxNavigator
+Plug 'christoomey/vim-tmux-navigator'
+
+" -- surround
 Plug 'tpope/vim-surround'
 
 " Language Specific Syntax
