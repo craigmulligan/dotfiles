@@ -38,4 +38,3 @@ sudo apt-get install -y nodejs
 sudo npm i --global eslint
 
 sudo groupadd docker && sudo usermod -aG docker $USER
-
