@@ -2,3 +2,5 @@ SYMLINK vimrc .vimrc
 SYMLINK gvimrc .gvimrc
 SYMLINK colors .vim/colors
 SYMLINK autoload .vim/autoload
+SYMLINK coc/extensions/package.json .config/coc/extensions/package.json
+SYMLINK coc/coc-settings.json .vim/coc-settings.json

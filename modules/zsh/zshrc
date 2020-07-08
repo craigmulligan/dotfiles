@@ -76,6 +76,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+source "$HOME/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -108,9 +109,15 @@ alias pom="sleep 2500 && zenity --warning --text='25 minutes passed'"
 
 # Make sure pipenv global dir is findable
 export PATH="${HOME}/.local/bin:$PATH"
+export PATH=$PATH:~/Play/bump
+export PATH=$PATH:~/Play/lil
 export PATH=$PATH:/usr/local/go/bin
-export GOPATH="${HOME}/Play/go"
+export GOPATH="$HOME/go"
 export PATH="${GOPATH}/bin:$PATH"
+export PATH="$PATH:$HOME/.poetry/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/usr/lib/dart/bin"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 bindkey -v
 # Make the escape mode the same as in vim.
@@ -132,9 +139,21 @@ if [ -f '/usr/local/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/bin
 # The next line enables shell command completion for gcloud.
 if [ -f '/usr/local/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/completion.zsh.inc'; fi
 
-vi-append-x-selection () { RBUFFER=$(xclip -o </dev/null)$RBUFFER; }
-zle -N vi-append-x-selection
-bindkey -a '^X' vi-append-x-selection
-vi-yank-x-selection () { print -rn -- $CUTBUFFER | xclip -sel clip; }
-zle -N vi-yank-x-selection
-bindkey -a '^Y' vi-yank-x-selection
+copy-to-xclip() {
+    [[ "$REGION_ACTIVE" -ne 0 ]] && zle copy-region-as-kill
+    print -rn -- $CUTBUFFER | xclip -sel clip -i
+}
+
+zle -N copy-to-xclip
+bindkey ",y" copy-to-xclip
+
+paste-xclip() {
+    killring=("$CUTBUFFER" "${(@)killring[1,-2]}")
+    CUTBUFFER=$(xclip -sel clip -o)
+    zle yank
+}
+
+zle -N paste-xclip
+bindkey ",p" paste-xclip
+
+source $HOME/.env

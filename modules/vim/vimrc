@@ -25,6 +25,15 @@ augroup nerdtree
   autocmd bufenter * call NERDTreeCloseIfLastWindow()
 augroup END
 
+
+" -- VimWiki --- "
+Plug 'vimwiki/vimwiki'
+
+" -- colorscheme --"
+Plug 'arzg/vim-corvine'
+
+Plug 'dart-lang/dart-vim-plugin'
+
 " -- CoC --
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " if hidden is not set, TextEdit might fail.
@@ -171,24 +180,10 @@ Plug 'jiangmiao/auto-pairs'
 
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', '<':'>'}
 
-" -- GitGutter --
-Plug 'airblade/vim-gitgutter'
-
-" Only show up to 500 signs at the same time
-" If the limit is exceeded, the signs will not
-" be shown until there are less than 500 again
-let g:gitgutter_max_signs = 500
-
 " -- prettier -- "
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#single_quote = 'true'
-let g:prettier#config#semi = 'false'
-let g:prettier#config#config_precedence = 'file-override'
+Plug 'prettier/vim-prettier', { 'do': 'npm install', 'branch': 'release/1.x' }
 
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
-
 
 " -- EditorConfig support --
 Plug 'editorconfig/editorconfig-vim'
@@ -200,38 +195,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
 
 " Language Specific Syntax
-Plug 'elzr/vim-json'
-Plug 'rust-lang/rust.vim'
-Plug 'jdonaldson/vaxe'
-
-Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
-
-Plug 'jelera/vim-javascript-syntax'
-Plug 'kchmck/vim-coffee-script'
+" Most things use coc (see ./coc)
 Plug 'jparise/vim-graphql'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'flowtype/vim-flow'
-let g:flow#autoclose = 1
-Plug 'nvie/vim-flake8'
-let g:flake8_show_in_gutter = 1
-Plug 'tell-k/vim-autopep8'
-let g:autopep8_on_save = 0
-let g:autopep8_disable_show_diff=1
-
-Plug 'reasonml-editor/vim-reason-plus'
-
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-" the path to python3 is obtained through executing `:echo exepath('python3')` in vim
-let g:python3_host_prog = "/usr/bin/python3"
-
-let g:LanguageClient_serverCommands = {
-    \ 'reason': ['/usr/local/bin/reason-language-server.exe']
-    \ }
-
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -804,16 +769,6 @@ command! WQ wq
 command! Q q
 
 "=========================================================================
-" $UTILITIES
-"=========================================================================
-
-" Swap current line with the line below
-nnoremap <Leader>j ddp
-
-" Swap current line with the line above
-nnoremap <Leader>k ddkP
-
-"=========================================================================
 " $TERMINAL
 "=========================================================================
 
@@ -824,20 +779,6 @@ if !has("gui_running")
   set ttyfast
 
 endif
-
-"=========================================================================
-" $ABBREVIATIONS
-"=========================================================================
-
-" Correct typos
-iabbrev waht what
-iabbrev tehn then
-iabbrev adn and
-iabbrev unkown unknown
-iabbrev entires entries
-iabbrev rigth right
-iabbrev unsuscribe unsubscribe
-iabbrev dictionaty dictionary
 
 "=========================================================================
 " $SYNTAX

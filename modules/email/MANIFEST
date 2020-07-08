@@ -1,2 +1,3 @@
-SYMLINK muttrc .muttrc
-SYMLINK aerc.conf .config/aerc/accounts.conf
+SYMLINK accounts.conf .config/aerc/accounts.conf
+SYMLINK aerc.conf .config/aerc/aerc.conf
+SYMLINK binds.conf .config/aerc/binds.conf

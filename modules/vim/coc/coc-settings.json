@@ -1,0 +1,7 @@
+{
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "python.formatting.provider": "black",
+  "python.linting.flake8Enabled": true,
+  "python.jediEnabled": false,
+  "python.linting.flake8Path": "/usr/bin/flake8"
+}

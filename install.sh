@@ -22,7 +22,10 @@ sudo apt-get update -y && \
   xclip \
   silversearcher-ag \
   lastpass-cli \
-  docker.io
+  docker.io \
+  # this is for aerc
+  dante-client \
+  wm3
 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -38,3 +41,6 @@ sudo apt-get install -y nodejs
 sudo npm i --global eslint
 
 sudo groupadd docker && sudo usermod -aG docker $USER
+
+# Install zsh system clip plugin
+git clone https://github.com/kutsan/zsh-system-clipboard ~/.zsh/plugins/zsh-system-clipboard

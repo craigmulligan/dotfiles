@@ -5,9 +5,9 @@
 	whitespace = trailing-space,space-before-tab,indent-with-non-tab,cr-at-eol
 [user]
 	name = Craig Mulligan
-	email = hobochildster@gmail.com
+	email = git@hobochild.com
 	username = hobochild
-	signingkey = 8FD7FA42A94D2F39
+	signingkey = 2C5F7416B13DC124264C59B54D88F3CC79EC75DB
 [color]
 	ui = true
 [push]
