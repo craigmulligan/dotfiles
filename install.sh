@@ -25,7 +25,8 @@ sudo apt-get update -y && \
   docker.io \
   # this is for aerc
   dante-client \
-  wm3
+  wm3 \
+  i3
 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
