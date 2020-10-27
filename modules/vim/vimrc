@@ -28,10 +28,6 @@ augroup END
 
 " -- VimWiki --- "
 Plug 'vimwiki/vimwiki'
-
-" -- colorscheme --"
-Plug 'arzg/vim-corvine'
-
 Plug 'dart-lang/dart-vim-plugin'
 
 " -- CoC --
@@ -179,11 +175,6 @@ command! SyntaxAttr call SyntaxAttr()
 Plug 'jiangmiao/auto-pairs'
 
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', '<':'>'}
-
-" -- prettier -- "
-Plug 'prettier/vim-prettier', { 'do': 'npm install', 'branch': 'release/1.x' }
-
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 " -- EditorConfig support --
 Plug 'editorconfig/editorconfig-vim'

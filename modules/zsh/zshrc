@@ -156,4 +156,4 @@ paste-xclip() {
 zle -N paste-xclip
 bindkey ",p" paste-xclip
 
-source $HOME/.env
+export $(cat $HOME/.env | xargs)
