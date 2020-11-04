@@ -86,6 +86,7 @@ nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -479,6 +480,8 @@ set showtabline=1
 noremap tl :tabnext<CR>
 noremap th :tabprevious<CR>
 
+nnoremap q <c-v>
+
 " Customise the contents of the tabline
 " http://vimdoc.sourceforge.net/htmldoc/tabpage.html#setting-tabline
 
@@ -759,7 +762,9 @@ command! Wq wq
 command! WQ wq
 command! Q q
 
+
 "=========================================================================
+"
 " $TERMINAL
 "=========================================================================
 

@@ -701,6 +701,8 @@ bar {
         status_command i3status
 }
 
+force-xinerama yes
+
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a
 # keysym-based config which used their favorite modifier (alt or windows)
@@ -711,3 +713,4 @@ bar {
 # Please remove the following exec line:
 #######################################################################
 exec i3-config-wizard
+exec --no-startup-id /usr/local/bin/i3-autodisplay -config ~/.i3-autodisplay-config.yaml

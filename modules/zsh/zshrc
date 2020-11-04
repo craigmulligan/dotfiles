@@ -103,6 +103,7 @@ alias activate="source venv/bin/activate"
 alias kop='function _kill_on_port(){ fuser -k $1/tcp };_kill_on_port'
 alias xclip='xclip -sel clip'
 alias pom="sleep 2500 && zenity --warning --text='25 minutes passed'"
+alias lg="pkill -KILL -u hobochild"
 
 # added by travis gem
 [ -f /home/hobochild/.travis/travis.sh ] && source /home/hobochild/.travis/travis.sh

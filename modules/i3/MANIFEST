@@ -1,1 +1,2 @@
 SYMLINK config /etc/i3/config
+SYMLINK autodisplay.yaml .i3-autodisplay-config.yaml

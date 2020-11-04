@@ -1,0 +1,6 @@
+displays:
+  - name: eDP-1
+    workspaces: [1]
+  - name: DP-1
+    workspaces: [2]
+    randr_extra_options: "--above eDP-1"
