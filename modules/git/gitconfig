@@ -7,7 +7,7 @@
 	name = Craig Mulligan
 	email = git@hobochild.com
 	username = hobochild
-	signingkey = 2C5F7416B13DC124264C59B54D88F3CC79EC75DB
+	signingkey = B9B77B2C7E2AFF70BA4FDE14765158708B59528C
 [color]
 	ui = true
 [push]

@@ -1,3 +1,5 @@
+set -e
+
 # needed for add-apt-repository
 sudo apt-get update -y && \
   sudo apt-get install -y software-properties-common
@@ -23,10 +25,7 @@ sudo apt-get update -y && \
   silversearcher-ag \
   lastpass-cli \
   docker.io \
-  # this is for aerc
-  dante-client \
-  wm3 \
-  i3
+  dante-client
 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
