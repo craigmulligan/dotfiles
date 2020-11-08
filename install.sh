@@ -25,7 +25,10 @@ sudo apt-get update -y && \
   silversearcher-ag \
   lastpass-cli \
   docker.io \
-  dante-client
+  dante-client \
+  python3 \
+  python3-pip
+
 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -41,6 +44,8 @@ sudo apt-get install -y nodejs
 sudo npm i --global eslint
 
 sudo groupadd docker && sudo usermod -aG docker $USER
+sudo usermod -aG docker $USER
+newgrp docker
 
 # Install zsh system clip plugin
 git clone https://github.com/kutsan/zsh-system-clipboard ~/.zsh/plugins/zsh-system-clipboard
