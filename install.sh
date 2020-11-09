@@ -49,3 +49,6 @@ newgrp docker
 
 # Install zsh system clip plugin
 git clone https://github.com/kutsan/zsh-system-clipboard ~/.zsh/plugins/zsh-system-clipboard
+
+# python utils
+pip3 install --user flake8 black

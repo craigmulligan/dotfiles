@@ -3,6 +3,6 @@
   "python.formatting.provider": "black",
   "python.linting.flake8Enabled": true,
   "python.jediEnabled": false,
-  "python.linting.flake8Path": "/usr/bin/flake8",
+  "python.linting.flake8Path": "/home/hobochild/.local/bin/flake8",
   "coc.preferences.formatOnSaveFiletypes": ["*"]
 }
