@@ -26,6 +26,7 @@ sudo apt-get update -y && \
   lastpass-cli \
   docker.io \
   dante-client \
+  w3m \
   python3 \
   python3-pip
 
@@ -52,3 +53,6 @@ git clone https://github.com/kutsan/zsh-system-clipboard ~/.zsh/plugins/zsh-syst
 
 # python utils
 pip3 install --user flake8 black
+
+# Golang
+curl -O https://golang.org/dl/go1.15.5.linux-amd64.tar.gz && tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz

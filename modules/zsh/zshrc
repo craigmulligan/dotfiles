@@ -158,3 +158,9 @@ zle -N paste-xclip
 bindkey ",p" paste-xclip
 
 export $(cat $HOME/.env | xargs)
+
+# Needed for docker dbus permissions
+# newgrp docker
+
+export PATH="$HOME/.poetry/bin:$PATH"
+alias sudo='sudo -E env "PATH=$PATH"'
