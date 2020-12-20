@@ -9,7 +9,7 @@
     "coc-prettier": ">=1.1.20",
     "coc-python": ">=1.2.13",
     "coc-sh": ">=0.6.0",
-    "coc-tsserver": ">=1.6.3",
+    "coc-tsserver": ">=1.6.5",
     "coc-yaml": ">=1.2.0",
     "coc-yank": ">=1.1.11"
   }

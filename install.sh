@@ -28,7 +28,8 @@ sudo apt-get update -y && \
   dante-client \
   w3m \
   python3 \
-  python3-pip
+  python3-pip \
+  qrencode
 
 
 # oh-my-zsh

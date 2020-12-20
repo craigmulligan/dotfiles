@@ -10,5 +10,6 @@
       "jsx": true
     }
   },
-  "extends": ["eslint:recommended"]
+  "extends": ["eslint:recommended"],
+  "plugins": ["@typescript-eslint"]
 }
