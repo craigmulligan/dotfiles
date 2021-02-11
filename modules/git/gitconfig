@@ -63,6 +63,7 @@
     syntax-theme = Dracula
     plus-style = syntax "#003800"
     minus-style = syntax "#3f0001"
+		max-line-length = "1000"
 
 [delta "decorations"]
     commit-decoration-style = bold yellow box ul
