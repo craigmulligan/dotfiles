@@ -20,13 +20,14 @@ inoremap <Esc> <nop>
 inoremap Jk <Esc>
 
 " ,s - toggle spell-check
-nnoremap <leader>s :set invspell<CR>
 " ,d insert datetime
 inoremap <leader>d <C-R>=strftime("%Y-%m-%dT%H:%M")<CR>
-inoremap <leader>ne :NERDTreeToggle<CR>
 
-map <C-J> :bnext<CR>
-map <C-K> :bprev<CR>
+" move around windows with ctrl
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+nnoremap <C-H> <C-W>h
 
 "=========================================================================
 " $PLUGINS
@@ -38,6 +39,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 let NERDSpaceDelims=1
 let NERDCommentWholeLinesInVMode=2
+inoremap <leader>ne :NERDTreeToggle<CR>
 
 " configures highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -87,6 +89,7 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>s <cmd>Telescope spell_suggest<cr>
 
 call plug#end()
 
