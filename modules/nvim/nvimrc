@@ -1,0 +1,185 @@
+
+
+""=========================================================================
+" $SETTINGS
+"=========================================================================
+set nocompatible
+set completeopt=menuone,noselect
+
+
+"=========================================================================
+" $KEYBINDINGS
+"=========================================================================
+let g:mapleader = ','
+
+" Map jk to <Esc> in insert mode
+inoremap jk <Esc>
+inoremap <Esc> <nop>
+
+" Map Jk as well as I always make the same mistake
+inoremap Jk <Esc>
+
+" ,s - toggle spell-check
+nnoremap <leader>s :set invspell<CR>
+" ,d insert datetime
+inoremap <leader>d <C-R>=strftime("%Y-%m-%dT%H:%M")<CR>
+inoremap <leader>ne :NERDTreeToggle<CR>
+
+map <C-J> :bnext<CR>
+map <C-K> :bprev<CR>
+
+"=========================================================================
+" $PLUGINS
+"=========================================================================
+
+call plug#begin(expand('~/.config/nvim/plugged'))
+
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+let NERDSpaceDelims=1
+let NERDCommentWholeLinesInVMode=2
+
+" configures highlighting
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+
+" statusline
+Plug 'vim-airline/vim-airline'
+
+" configures the lsp
+Plug 'neovim/nvim-lspconfig'
+
+" auto complete
+Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/vim-vsnip'
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+let g:compe.snippetSupport = v:true
+
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:true
+let g:compe.source.ultisnips = v:true
+
+" dependencies
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+" telescope
+Plug 'nvim-telescope/telescope.nvim'
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+call plug#end()
+
+"=========================================================================
+" Visual settings
+"=========================================================================
+
+" Diff colours
+highlight DiffAdd ctermbg=34 ctermfg=15 guibg=#00af00 guifg=#ffffff
+highlight DiffDelete ctermbg=1 ctermfg=15 guibg=#800000 guifg=#ffffff
+highlight DiffChange ctermbg=9 ctermfg=15 guibg=#ff0000 guifg=#ffffff
+highlight DiffText ctermbg=32 ctermfg=15 guibg=#0087df guifg=#ffffff
+
+
+"" Turn-on dracula color scheme
+syntax on
+"" color dracula
+
+"=========================================================================
+" LSP settings
+"=========================================================================
+"
+" :lua << EOF
+  " require'lspconfig'.pyright.setup{}
+" EOF
+
+:lua << EOF
+local nvim_lsp = require('lspconfig')
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  --Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { "pyright" }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup { on_attach = on_attach }
+end
+
+
+require("lspconfig").diagnosticls.setup {
+  filetypes = {"python"},
+  init_options = {
+    formatters = {
+      black = {
+        command = "black",
+        args = {"--quiet", "-"},
+        rootPatterns = {"pyproject.toml"},
+      },
+      formatFiletypes = {
+        python = {"black"}
+      }
+    }
+  }
+}
+EOF
+
+"=========================================================================
+" $CLIPBOARD
+"=========================================================================
+
+" Copy-paste friendly
+noremap <Leader>y "+y
+noremap <Leader>p "+p
+noremap <Leader>Y "*y
+noremap <Leader>P "*p
