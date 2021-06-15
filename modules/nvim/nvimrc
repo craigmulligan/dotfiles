@@ -91,6 +91,9 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>s <cmd>Telescope spell_suggest<cr>
 
+" Color scheme
+Plug 'rafamadriz/neon'
+
 call plug#end()
 
 "=========================================================================
@@ -104,9 +107,8 @@ highlight DiffChange ctermbg=9 ctermfg=15 guibg=#ff0000 guifg=#ffffff
 highlight DiffText ctermbg=32 ctermfg=15 guibg=#0087df guifg=#ffffff
 
 
-"" Turn-on dracula color scheme
 syntax on
-"" color dracula
+colorscheme neon
 
 "=========================================================================
 " LSP settings

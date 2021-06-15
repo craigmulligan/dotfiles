@@ -107,6 +107,9 @@ alias pom="sleep 2500 && zenity --warning --text='25 minutes passed'"
 alias lg="pkill -KILL -u hobochild"
 alias qr="qrencode"
 alias clip2qr="xclip -out -sel clip | qrencode -t UTF8"
+# Open current repo in browser
+alias ghv="gh repo view --web"
+alias task="./task"
 
 # added by travis gem
 [ -f /home/hobochild/.travis/travis.sh ] && source /home/hobochild/.travis/travis.sh
