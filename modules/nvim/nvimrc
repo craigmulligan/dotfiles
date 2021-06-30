@@ -39,7 +39,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 let NERDSpaceDelims=1
 let NERDCommentWholeLinesInVMode=2
-inoremap <leader>ne :NERDTreeToggle<CR>
+nmap <leader>ne :NERDTreeToggle<CR>
 
 " configures highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -93,6 +93,11 @@ nnoremap <leader>s <cmd>Telescope spell_suggest<cr>
 
 " Color scheme
 Plug 'rafamadriz/neon'
+Plug 'dracula/vim'
+
+
+" Which Key 
+Plug 'folke/which-key.nvim'
 
 call plug#end()
 
@@ -108,15 +113,12 @@ highlight DiffText ctermbg=32 ctermfg=15 guibg=#0087df guifg=#ffffff
 
 
 syntax on
-colorscheme neon
+color dracula
 
 "=========================================================================
 " LSP settings
 "=========================================================================
 "
-" :lua << EOF
-  " require'lspconfig'.pyright.setup{}
-" EOF
 
 :lua << EOF
 local nvim_lsp = require('lspconfig')
@@ -163,13 +165,13 @@ end
 
 
 require("lspconfig").diagnosticls.setup {
+  on_attach = on_attach,
   filetypes = {"python"},
   init_options = {
     formatters = {
       black = {
         command = "black",
-        args = {"--quiet", "-"},
-        rootPatterns = {"pyproject.toml"},
+        args = {},
       },
       formatFiletypes = {
         python = {"black"}
@@ -177,6 +179,8 @@ require("lspconfig").diagnosticls.setup {
     }
   }
 }
+
+require("which-key").setup {}
 EOF
 
 "=========================================================================

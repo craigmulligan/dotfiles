@@ -1,1 +1,1 @@
-npm i -g pyright
+npm i -g pyright diagnostic-languageserver

@@ -29,7 +29,8 @@ sudo apt-get update -y && \
   w3m \
   python3 \
   python3-pip \
-  qrencode
+  qrencode \
+  ripgrep
 
 
 # oh-my-zsh
