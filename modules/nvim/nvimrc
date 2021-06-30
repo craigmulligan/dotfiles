@@ -8,16 +8,13 @@ set completeopt=menuone,noselect
 
 
 "=========================================================================
-" $KEYBINDINGS
+" $GENERAL KEYBINDINGS
 "=========================================================================
 let g:mapleader = ','
 
 " Map jk to <Esc> in insert mode
 inoremap jk <Esc>
 inoremap <Esc> <nop>
-
-" Map Jk as well as I always make the same mistake
-inoremap Jk <Esc>
 
 " ,s - toggle spell-check
 " ,d insert datetime
@@ -28,6 +25,10 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
+
+" Reload nvimrc
+nnoremap <leader>sv :source $MYVIMRC<CR>
+autocmd BufWritePre *.py execute ':Black'
 
 "=========================================================================
 " $PLUGINS
@@ -50,6 +51,7 @@ Plug 'vim-airline/vim-airline'
 
 " configures the lsp
 Plug 'neovim/nvim-lspconfig'
+Plug 'kabouzeid/nvim-lspinstall'
 
 " auto complete
 Plug 'hrsh7th/nvim-compe'
@@ -78,7 +80,7 @@ let g:compe.source.nvim_lua = v:true
 let g:compe.source.vsnip = v:true
 let g:compe.source.ultisnips = v:true
 
-" dependencies
+" telescope dependencies
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 " telescope
@@ -92,12 +94,14 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>s <cmd>Telescope spell_suggest<cr>
 
 " Color scheme
-Plug 'rafamadriz/neon'
 Plug 'dracula/vim'
 
 
 " Which Key 
 Plug 'folke/which-key.nvim'
+
+" Python black formatting
+Plug 'psf/black', { 'branch': 'stable' }
 
 call plug#end()
 
@@ -158,27 +162,22 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "pyright" }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
+
+local function setup_servers()
+  require'lspinstall'.setup()
+  local servers = require'lspinstall'.installed_servers()
+  for _, server in pairs(servers) do
+    require'lspconfig'[server].setup{}
+  end
 end
 
+setup_servers()
 
-require("lspconfig").diagnosticls.setup {
-  on_attach = on_attach,
-  filetypes = {"python"},
-  init_options = {
-    formatters = {
-      black = {
-        command = "black",
-        args = {},
-      },
-      formatFiletypes = {
-        python = {"black"}
-      }
-    }
-  }
-}
+-- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+require'lspinstall'.post_install_hook = function ()
+  setup_servers() -- reload installed servers
+  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
 
 require("which-key").setup {}
 EOF
