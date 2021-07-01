@@ -28,7 +28,8 @@ nnoremap <C-H> <C-W>h
 
 " Reload nvimrc
 nnoremap <leader>sv :source $MYVIMRC<CR>
-autocmd BufWritePre *.py execute ':Black'
+
+" autocmd BufWritePre *.py execute ':Black'
 
 "=========================================================================
 " $PLUGINS
@@ -45,6 +46,9 @@ nmap <leader>ne :NERDTreeToggle<CR>
 " configures highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
+
+" Surround
+Plug 'tpope/vim-surround' 
 
 " statusline
 Plug 'vim-airline/vim-airline'
