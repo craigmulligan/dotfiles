@@ -110,6 +110,8 @@ alias clip2qr="xclip -out -sel clip | qrencode -t UTF8"
 # Open current repo in browser
 alias ghv="gh repo view --web"
 alias task="./task"
+alias vol="pavucontrol"
+alias cpr="copyq read"
 
 # added by travis gem
 [ -f /home/hobochild/.travis/travis.sh ] && source /home/hobochild/.travis/travis.sh

@@ -30,6 +30,8 @@ nnoremap <C-H> <C-W>h
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " autocmd BufWritePre *.py execute ':Black'
+autocmd BufWritePre *.* lua vim.lsp.buf.formatting_sync(nil, 1000)
+
 
 "=========================================================================
 " $PLUGINS
@@ -42,6 +44,8 @@ Plug 'scrooloose/nerdcommenter'
 let NERDSpaceDelims=1
 let NERDCommentWholeLinesInVMode=2
 nmap <leader>ne :NERDTreeToggle<CR>
+
+" Auto format
 
 " configures highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -104,9 +108,6 @@ Plug 'dracula/vim'
 " Which Key 
 Plug 'folke/which-key.nvim'
 
-" Python black formatting
-Plug 'psf/black', { 'branch': 'stable' }
-
 call plug#end()
 
 "=========================================================================
@@ -167,20 +168,55 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 
+-- config that activates keymaps and enables snippet support
+local function make_config()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  return {
+    -- enable snippet support
+    capabilities = capabilities,
+    -- map buffer local keybindings when the language server attaches
+    on_attach = on_attach,
+  }
+end
+
 local function setup_servers()
   require'lspinstall'.setup()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   local servers = require'lspinstall'.installed_servers()
+  table.insert(servers, "diagnosticls")
+
   for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{
-    	capabilities = capabilities,
-	on_attach = on_attach
+    local config = make_config()
+
+    if server == "diagnosticls" then
+      config = {
+	filetypes = {
+     	  "python",
+        },
+	init_options = {
+	    formatters = {
+	      black = {
+		command = "black",
+		args = {"--quiet", "-"},
+		rootPatterns = {"pyproject.toml"},
+	      },
+	    },
+	    formatFiletypes = {
+	      python = {"black"}
+	    },
+        }
     }
+    end
+
+    require'lspconfig'[server].setup(config)
   end
 end
 
 setup_servers()
+
+
 
 -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
 require'lspinstall'.post_install_hook = function ()
