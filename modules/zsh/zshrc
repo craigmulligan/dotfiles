@@ -112,6 +112,8 @@ alias ghv="gh repo view --web"
 alias task="./task"
 alias vol="pavucontrol"
 alias cpr="copyq read"
+alias nvim="lvim"
+alias vim="lvim"
 
 # added by travis gem
 [ -f /home/hobochild/.travis/travis.sh ] && source /home/hobochild/.travis/travis.sh
@@ -180,4 +182,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export FLYCTL_INSTALL="/home/hobochild/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
+export PATH="$FLYCTL_INSTALL/bin::$PATH"
+export PATH="$HOME/.cargo/env::$PATH"
