@@ -21,8 +21,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "typescript",
   "css",
   "rust",
-  "yaml",
-  "markdown"
+  "yaml"
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -32,4 +31,9 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.plugins = {
   "ggandor/lightspeed.nvim",
   event = "BufRead",
+}
+
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  { exe = "black" }
 }
