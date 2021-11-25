@@ -1,2 +1,0 @@
-SYMLINK nvimrc .nvimrc
-SYMLINK nvimrc .config/nvim/init.vim
