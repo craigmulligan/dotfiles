@@ -1,1 +1,1 @@
-SYMLINK config.lua .config/nvim/config.lau  
+SYMLINK config.lua .config/lvim/config.lua
