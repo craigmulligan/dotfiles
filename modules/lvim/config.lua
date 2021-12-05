@@ -32,10 +32,16 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 -- PLUGINS ---
 -- Easy motion like
-lvim.plugins = {
+lvim.plugins = {{
   "ggandor/lightspeed.nvim",
   event = "BufRead",
-}
+}, {
+  "ray-x/lsp_signature.nvim",
+  event = "BufRead",
+  config = function()
+    require "lsp_signature".setup()
+  end
+}}
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
