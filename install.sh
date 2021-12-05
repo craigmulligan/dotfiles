@@ -4,33 +4,23 @@ set -e
 sudo apt-get update -y && \
   sudo apt-get install -y software-properties-common
 
-# Add third-party repos
-sudo add-apt-repository ppa:jonathonf/vim
-
 # Deps
 sudo apt-get update -y && \
   sudo apt-get install -y git \
   make \
   curl \
   zsh \
-  vim \
-  vim-gtk \
   python \
   jq \
   mutt \
-  offlineimap \
   msmtp \
-  tmux \
   xclip \
-  silversearcher-ag \
-  lastpass-cli \
   docker.io \
-  dante-client \
   w3m \
   python3 \
   python3-pip \
   qrencode \
-  ripgrep
+  whois
 
 
 # oh-my-zsh

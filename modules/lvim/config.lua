@@ -1,10 +1,9 @@
--- general
+-- GENERAL ---
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "onedarker"
 
 lvim.leader = "space"
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
@@ -27,6 +26,11 @@ lvim.builtin.treesitter.ensure_installed = {
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
+-- KEYBINDINGS ---
+lvim.keys.normal_mode["<S-x>"] = ":BufferClose<CR>"
+lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+
+-- PLUGINS ---
 -- Easy motion like
 lvim.plugins = {
   "ggandor/lightspeed.nvim",
