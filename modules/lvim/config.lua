@@ -30,6 +30,18 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.keys.normal_mode["<S-x>"] = ":BufferClose<CR>"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
+
+-- Trouble.nvim --
+lvim.builtin.which_key.mappings["t"] = {
+  name = "Diagnostics",
+  t = { "<cmd>TroubleToggle<cr>", "trouble" },
+  w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace" },
+  d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document" },
+  q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
+  l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
+  r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
+}
+
 -- PLUGINS ---
 -- Easy motion like
 lvim.plugins = {{
@@ -41,6 +53,15 @@ lvim.plugins = {{
   config = function()
     require "lsp_signature".setup()
   end
+}, {
+  "windwp/nvim-spectre",
+  event = "BufRead",
+  config = function()
+    require("spectre").setup()
+  end,
+}, {
+  "folke/trouble.nvim",
+   cmd = "TroubleToggle",
 }}
 
 local formatters = require "lvim.lsp.null-ls.formatters"
