@@ -62,6 +62,8 @@ lvim.plugins = {{
 }, {
   "folke/trouble.nvim",
    cmd = "TroubleToggle",
+}, {
+  "dhruvasagar/vim-table-mode"
 }}
 
 local formatters = require "lvim.lsp.null-ls.formatters"
