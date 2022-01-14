@@ -1,30 +1,23 @@
 -- GENERAL ---
-lvim.log.level = "warn"
+lvim.log.level = "debug"
+lvim.lsp.null_ls.setup = {
+  log = {
+    level = "debug",
+  },
+}
 lvim.format_on_save = true
 lvim.colorscheme = "onedarker"
-
 lvim.leader = "space"
+
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
-
--- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = {
-  "bash",
-  "c",
-  "javascript",
-  "json",
-  "lua",
-  "python",
-  "typescript",
-  "css",
-  "rust",
-  "yaml"
-}
-
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+
+lvim.lsp.automatic_servers_installation = true
+
 
 -- KEYBINDINGS ---
 lvim.keys.normal_mode["<S-x>"] = ":BufferClose<CR>"
@@ -41,32 +34,39 @@ lvim.builtin.which_key.mappings["t"] = {
   l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
   r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
 }
+lvim.builtin.which_key.mappings["sr"] = {
+  "<cmd>lua require('spectre').open()<cr>", "Search & Replace"
+}
 
 -- PLUGINS ---
--- Easy motion like
 lvim.plugins = {{
+  -- Easy motion like --
   "ggandor/lightspeed.nvim",
   event = "BufRead",
 }, {
+  -- signature popup --
   "ray-x/lsp_signature.nvim",
   event = "BufRead",
   config = function()
     require "lsp_signature".setup()
   end
 }, {
+  -- signature popup --
   "windwp/nvim-spectre",
   event = "BufRead",
   config = function()
     require("spectre").setup()
   end,
 }, {
+   -- better quickfix window --
   "folke/trouble.nvim",
    cmd = "TroubleToggle",
 }, {
+   -- markdown tables --
   "dhruvasagar/vim-table-mode"
 }}
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { exe = "black" }
+  { exe = "black", filetypes = { "python" } }
 }
