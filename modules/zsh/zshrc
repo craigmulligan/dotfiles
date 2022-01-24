@@ -115,6 +115,9 @@ alias cpr="copyq read"
 alias nvim="lvim"
 alias vim="lvim"
 
+# Modern tools
+alias cat="batcat"
+
 # added by travis gem
 [ -f /home/hobochild/.travis/travis.sh ] && source /home/hobochild/.travis/travis.sh
 
