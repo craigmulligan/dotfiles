@@ -37,6 +37,9 @@ lvim.builtin.which_key.mappings["t"] = {
 lvim.builtin.which_key.mappings["sr"] = {
   "<cmd>lua require('spectre').open()<cr>", "Search & Replace"
 }
+lvim.builtin.which_key.mappings["gy"] = {
+  '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>', "Open in browser"
+}
 
 -- PLUGINS ---
 lvim.plugins = {{
@@ -64,6 +67,9 @@ lvim.plugins = {{
 }, {
    -- markdown tables --
   "dhruvasagar/vim-table-mode"
+}, {
+  "ruifm/gitlinker.nvim",
+  requires = "nvim-lua/plenary.nvim",
 }}
 
 local formatters = require "lvim.lsp.null-ls.formatters"
