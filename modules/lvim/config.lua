@@ -1,17 +1,9 @@
 -- GENERAL ---
 lvim.log.level = "debug"
-lvim.lsp.null_ls.setup = {
-  log = {
-    level = "debug",
-  },
-}
 lvim.format_on_save = true
 lvim.colorscheme = "onedarker"
 lvim.leader = "space"
 
-lvim.builtin.dashboard.active = true
-lvim.builtin.terminal.active = true
-lvim.builtin.project.active = false
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -24,7 +16,7 @@ lvim.keys.normal_mode["<S-x>"] = ":BufferClose<CR>"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 
--- Trouble.nvim --
+-- -- Trouble.nvim --
 lvim.builtin.which_key.mappings["t"] = {
   name = "Diagnostics",
   t = { "<cmd>TroubleToggle<cr>", "trouble" },
