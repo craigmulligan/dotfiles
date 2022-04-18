@@ -112,11 +112,11 @@ alias ghv="gh repo view --web"
 alias task="./task"
 alias vol="pavucontrol"
 alias cpr="copyq read"
-alias nvim="lvim"
-alias vim="lvim"
+# alias nvim="lvim"
+alias vi="lvim"
 
 # Modern tools
-alias cat="batcat"
+alias bcat="batcat"
 
 # added by travis gem
 [ -f /home/hobochild/.travis/travis.sh ] && source /home/hobochild/.travis/travis.sh

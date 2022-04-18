@@ -39,14 +39,14 @@ lvim.plugins = {{
   "ggandor/lightspeed.nvim",
   event = "BufRead",
 }, {
-  -- signature popup --
+  -- popup --
   "ray-x/lsp_signature.nvim",
   event = "BufRead",
   config = function()
     require "lsp_signature".setup()
   end
 }, {
-  -- signature popup --
+  -- search & replace --
   "windwp/nvim-spectre",
   event = "BufRead",
   config = function()
@@ -60,6 +60,7 @@ lvim.plugins = {{
    -- markdown tables --
   "dhruvasagar/vim-table-mode"
 }, {
+  -- easy github links -- 
   "ruifm/gitlinker.nvim",
   requires = "nvim-lua/plenary.nvim",
 }}
