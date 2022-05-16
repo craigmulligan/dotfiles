@@ -114,6 +114,7 @@ alias vol="pavucontrol"
 alias cpr="copyq read"
 # alias nvim="lvim"
 alias vi="lvim"
+alias iv="lvim"
 
 # Modern tools
 alias bcat="batcat"
