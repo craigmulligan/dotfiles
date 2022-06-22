@@ -77,7 +77,6 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
-source "$HOME/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -109,7 +108,6 @@ alias qr="qrencode"
 alias clip2qr="xclip -out -sel clip | qrencode -t UTF8"
 # Open current repo in browser
 alias ghv="gh repo view --web"
-alias task="./task"
 alias vol="pavucontrol"
 alias cpr="copyq read"
 # alias nvim="lvim"
@@ -118,9 +116,6 @@ alias iv="lvim"
 
 # Modern tools
 alias bcat="batcat"
-
-# added by travis gem
-[ -f /home/hobochild/.travis/travis.sh ] && source /home/hobochild/.travis/travis.sh
 
 # Make sure pipenv global dir is findable
 export PATH="${HOME}/.local/bin:$PATH"
@@ -138,44 +133,9 @@ bindkey -v
 # Make the escape mode the same as in vim.
 bindkey jk vi-cmd-mode
 
-##################################################
-# Auto compeletions
-##################################################
-## android studio
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/usr/local/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/usr/local/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/completion.zsh.inc'; fi
-
-copy-to-xclip() {
-    [[ "$REGION_ACTIVE" -ne 0 ]] && zle copy-region-as-kill
-    print -rn -- $CUTBUFFER | xclip -sel clip -i
-}
-
-zle -N copy-to-xclip
-bindkey ",y" copy-to-xclip
-
-paste-xclip() {
-    killring=("$CUTBUFFER" "${(@)killring[1,-2]}")
-    CUTBUFFER=$(xclip -sel clip -o)
-    zle yank
-}
-
-zle -N paste-xclip
-bindkey ",p" paste-xclip
-
 export $(cat $HOME/.env | xargs)
 
 # Needed for docker dbus permissions
-# newgrp docker
-
 export PATH="$HOME/.poetry/bin:$PATH"
 alias sudo='sudo -E env "PATH=$PATH"'
 export DENO_INSTALL="/home/hobochild/.deno"
@@ -188,3 +148,5 @@ export NVM_DIR="$HOME/.nvm"
 export FLYCTL_INSTALL="/home/hobochild/.fly"
 export PATH="$FLYCTL_INSTALL/bin::$PATH"
 export PATH="$HOME/.cargo/env::$PATH"
+
+source "$HOME/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"
