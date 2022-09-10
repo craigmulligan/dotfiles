@@ -7,8 +7,7 @@ lvim.leader = "space"
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
-lvim.lsp.automatic_servers_installation = true
-
+lvim.lsp.installer.setup.automatic_installation = true
 
 -- KEYBINDINGS ---
 lvim.keys.normal_mode["<S-x>"] = ":BufferClose<CR>"
@@ -62,6 +61,8 @@ lvim.plugins = {{
   -- easy github links -- 
   "ruifm/gitlinker.nvim",
   requires = "nvim-lua/plenary.nvim",
+}, {
+  "tpope/vim-surround",
 }}
 
 local formatters = require "lvim.lsp.null-ls.formatters"
