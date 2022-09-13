@@ -1,19 +1,3 @@
--- GENERAL ---
-lvim.log.level = "debug"
-lvim.format_on_save = true
-lvim.colorscheme = "onedarker"
-lvim.leader = "space"
-
-lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.treesitter.ignore_install = { "haskell" }
-lvim.builtin.treesitter.highlight.enabled = true
-lvim.lsp.installer.setup.automatic_installation = true
-
--- KEYBINDINGS ---
-lvim.keys.normal_mode["<S-x>"] = ":BufferClose<CR>"
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-
-
 -- -- Trouble.nvim --
 lvim.builtin.which_key.mappings["t"] = {
   name = "Diagnostics",
@@ -28,11 +12,12 @@ lvim.builtin.which_key.mappings["sr"] = {
   "<cmd>lua require('spectre').open()<cr>", "Search & Replace"
 }
 lvim.builtin.which_key.mappings["gy"] = {
-  '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>', "Open in browser"
+  '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+  "Open in browser"
 }
 
 -- PLUGINS ---
-lvim.plugins = {{
+lvim.plugins = { {
   -- Easy motion like --
   "ggandor/lightspeed.nvim",
   event = "BufRead",
@@ -51,19 +36,19 @@ lvim.plugins = {{
     require("spectre").setup()
   end,
 }, {
-   -- better quickfix window --
+  -- better quickfix window --
   "folke/trouble.nvim",
-   cmd = "TroubleToggle",
+  cmd = "TroubleToggle",
 }, {
-   -- markdown tables --
+  -- markdown tables --
   "dhruvasagar/vim-table-mode"
 }, {
-  -- easy github links -- 
+  -- easy github links --
   "ruifm/gitlinker.nvim",
   requires = "nvim-lua/plenary.nvim",
 }, {
   "tpope/vim-surround",
-}}
+} }
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
