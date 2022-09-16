@@ -15,6 +15,12 @@ lvim.builtin.which_key.mappings["gy"] = {
   '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
   "Open in browser"
 }
+lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+
+vim.opt.foldmethod = "expr" -- folding set to "expr" for treesitter based folding
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
+vim.opt.foldlevel = 99 -- set to unfold everything by default
 
 -- PLUGINS ---
 lvim.plugins = { {
