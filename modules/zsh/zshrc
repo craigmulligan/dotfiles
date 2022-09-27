@@ -6,7 +6,7 @@ export ZSH=/home/hobochild/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="dracula"
+ZSH_THEME="agnoster"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -62,7 +62,6 @@ ZSH_THEME="dracula"
 ##################################################
 
 # vim mode
-export EDITOR=nvim
 
 plugins=(
   git
@@ -78,12 +77,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+export EDITOR=vi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

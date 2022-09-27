@@ -49,6 +49,6 @@ pip3 install --user flake8 black
 curl -O https://golang.org/dl/go1.15.5.linux-amd64.tar.gz && tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz
 
 
-curl https://raw.githubusercontent.com/dracula/zsh/master/dracula.zsh-theme > ~/.oh-my-zsh/themes/dracula.zsh-theme
-mkdir -p ~/.oh-my-zsh/themes/lib
-curl https://raw.githubusercontent.com/dracula/zsh/master/lib/async.zsh > ~/.oh-my-zsh/themes/lib/async.zsh
+# curl https://raw.githubusercontent.com/dracula/zsh/master/dracula.zsh-theme > ~/.oh-my-zsh/themes/dracula.zsh-theme
+# mkdir -p ~/.oh-my-zsh/themes/lib
+# curl https://raw.githubusercontent.com/dracula/zsh/master/lib/async.zsh > ~/.oh-my-zsh/themes/lib/async.zsh
