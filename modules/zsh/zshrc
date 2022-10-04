@@ -69,6 +69,7 @@ plugins=(
   zsh-completions
   wd
 )
+fpath+=~/.zfunc
 
 autoload -U compinit && compinit
 
