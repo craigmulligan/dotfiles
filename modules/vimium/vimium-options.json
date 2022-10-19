@@ -6,7 +6,7 @@
       "passKeys": ""
     }
   ],
-  "filterLinkHints": true,
+  "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
   "keyMappings": "# Insert your preferred key mappings here.\nmap <a-K> nextTab\nmap <a-J> previousTab",
