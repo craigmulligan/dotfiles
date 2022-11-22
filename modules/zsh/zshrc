@@ -61,7 +61,13 @@ ZSH_THEME="agnoster"
 # Settings
 ##################################################
 
-# vim mode
+# https://gist.github.com/ctechols/ca1035271ad134841284
+autoload -Uz compinit 
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+	compinit;
+else
+	compinit -C;
+fi;
 
 plugins=(
   git
@@ -70,8 +76,6 @@ plugins=(
   wd
 )
 fpath+=~/.zfunc
-
-autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 
@@ -90,7 +94,8 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Aliases
 ##################################################
 
-alias reload="source $HOME/.zshrc"
+
+alias reload="omz reload"
 alias ll="ls -l"
 alias tele="telepresence"
 alias venv="virtualenv venv"
@@ -131,15 +136,9 @@ bindkey jk vi-cmd-mode
 export $(cat $HOME/.env | xargs)
 
 # Needed for docker dbus permissions
-export PATH="$HOME/.poetry/bin:$PATH"
 alias sudo='sudo -E env "PATH=$PATH"'
 export DENO_INSTALL="/home/hobochild/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 export FLYCTL_INSTALL="/home/hobochild/.fly"
 export PATH="$FLYCTL_INSTALL/bin::$PATH"
 export PATH="$HOME/.cargo/env::$PATH"
