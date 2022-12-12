@@ -1,5 +1,6 @@
 curl -L https://github.com/dandavison/delta/releases/download/0.11.3/git-delta_0.11.3_amd64.deb > delta.deb
 
+brew install difftastic
 sudo dpkg -i delta.deb
 sudo mv delta.deb /usr/local/bin
 
