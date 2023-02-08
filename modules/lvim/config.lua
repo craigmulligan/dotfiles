@@ -25,6 +25,24 @@ vim.opt.foldmethod = "expr" -- folding set to "expr" for treesitter based foldin
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
 vim.opt.foldlevel = 99 -- set to unfold everything by default
 
+-- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
+-- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
+local _, actions = pcall(require, "telescope.actions")
+lvim.builtin.telescope.defaults.mappings = {
+  -- for input mode
+  i = {
+    ["<C-j>"] = actions.move_selection_next,
+    ["<C-k>"] = actions.move_selection_previous,
+    ["<C-n>"] = actions.cycle_history_next,
+    ["<C-p>"] = actions.cycle_history_prev,
+  },
+  -- for normal mode
+  n = {
+    ["<C-j>"] = actions.move_selection_next,
+    ["<C-k>"] = actions.move_selection_previous,
+  },
+}
+
 -- PLUGINS ---
 lvim.plugins = { {
   -- Easy motion like --
@@ -54,7 +72,7 @@ lvim.plugins = { {
 }, {
   -- easy github links --
   "ruifm/gitlinker.nvim",
-  requires = "nvim-lua/plenary.nvim",
+  dependencies = "nvim-lua/plenary.nvim",
 }, {
   "tpope/vim-surround",
 } }
