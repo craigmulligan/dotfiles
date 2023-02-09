@@ -1,3 +1,4 @@
+lvim.format_on_save = true
 -- -- Trouble.nvim --
 lvim.builtin.which_key.mappings["t"] = {
   name = "Diagnostics",
