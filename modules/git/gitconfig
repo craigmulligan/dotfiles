@@ -1,6 +1,6 @@
 [core]
 	mergeoptions = --no-edit
-	editor = vi 
+	editor = lvim
 	autocrlf = input
 	whitespace = trailing-space,space-before-tab,indent-with-non-tab,cr-at-eol
 [user]
