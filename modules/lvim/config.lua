@@ -21,7 +21,7 @@ lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 lvim.keys.normal_mode["<S-j>"] = ""
 lvim.keys.insert_mode["jk"] = "<ESC>"
 
-
+vim.opt.wrap = true
 vim.opt.foldmethod = "expr" -- folding set to "expr" for treesitter based folding
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
 vim.opt.foldlevel = 99 -- set to unfold everything by default
