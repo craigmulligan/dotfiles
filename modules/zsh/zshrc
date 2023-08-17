@@ -6,7 +6,7 @@ export ZSH=/home/hobochild/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="shades-of-purple"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -82,7 +82,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-export EDITOR=vi
+export EDITOR=hx
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -128,6 +128,7 @@ export PATH="$PATH:$HOME/.poetry/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/usr/lib/dart/bin"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="$PATH:$HOME/.gem/ruby/3.0.0/bin"
 
 bindkey -v
 # Make the escape mode the same as in vim.
@@ -158,3 +159,5 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 alias bfg='java -jar /usr/local/bin/bfg.jar'
+
+export LTEX_GLOBAL_STORAGE_PATH="$HOME/.config/ltex/"

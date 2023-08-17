@@ -1,0 +1,2 @@
+SYMLINK config.toml .config/helix/config.toml
+SYMLINK languages.toml .config/helix/languages.toml
