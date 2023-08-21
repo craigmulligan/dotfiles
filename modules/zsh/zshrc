@@ -83,6 +83,7 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
 export EDITOR=hx
+export VISUAL=hx
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -111,8 +112,8 @@ alias ghv="gh repo view --web"
 alias vol="pavucontrol"
 alias cpr="copyq read"
 # alias nvim="lvim"
-alias vi="lvim"
-alias iv="lvim"
+alias vi="hx"
+alias iv="hx"
 
 # Modern tools
 alias bcat="batcat"

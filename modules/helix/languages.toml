@@ -15,6 +15,11 @@ config = {}
 name = "typescript"
 auto-format = true
 
+
+[[language]]
+name = "tsx"
+auto-format = true
+
 [[language]]
 name = "ruby"
 formatter = { command = "rubocop", args = ["--stdin", "foo.rb", "-a", "--stderr", "--fail-level", "fatal"] }
