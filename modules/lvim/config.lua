@@ -1,4 +1,11 @@
 lvim.format_on_save = true
+
+lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<S-j>"] = ""
+lvim.keys.insert_mode["jk"] = "<ESC>"
+
+
 -- -- Trouble.nvim --
 lvim.builtin.which_key.mappings["t"] = {
   name = "Diagnostics",
@@ -16,11 +23,13 @@ lvim.builtin.which_key.mappings["gy"] = {
   '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
   "Open in browser"
 }
-lvim.builtin.dap.active = true
-lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
-lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
-lvim.keys.normal_mode["<S-j>"] = ""
-lvim.keys.insert_mode["jk"] = "<ESC>"
+
+
+-- lvim.builtin.dap.active = true
+lvim.builtin.which_key.setup.plugins.presets.operators = true
+lvim.builtin.which_key.setup.plugins.presets.motions = true
+lvim.builtin.which_key.setup.plugins.presets.text_objects = true
+lvim.builtin.which_key.setup.plugins.presets.nav = true
 
 vim.opt.wrap = true
 vim.opt.foldmethod = "expr"                     -- folding set to "expr" for treesitter based folding
@@ -96,10 +105,6 @@ lvim.plugins = { {
       }
     end
   end
-}, {
-  "microsoft/vscode-js-debug",
-  lazy = true,
-  build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
 },
   {
     -- popup --
@@ -130,16 +135,21 @@ lvim.plugins = { {
   "tpope/vim-surround",
 } }
 
+
+
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  { command = "eslint", filetypes = { "typescript", "typescriptreact" } }
+}
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { exe = "black", filetypes = { "python" } },
   {
     name = "prettier",
-    ---@usage arguments to pass to the formatter
+
     -- these cannot contain whitespace
     -- options such as `--line-width 80` become either `{"--line-width", "80"}` or `{"--line-width=80"}`
-    args = { "--print-width", "100" },
-    ---@usage only start in these filetypes, by default it will attach to all filetypes it supports
-    filetypes = { "typescript", "typescriptreact" },
+    --@usage only start in these filetypes, by default it will attach to all filetypes it supports
+    filetypes = { "typescript", "typescriptreact", "lua" },
   },
 }
