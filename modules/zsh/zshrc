@@ -62,7 +62,7 @@ ZSH_THEME="shades-of-purple"
 ##################################################
 
 # https://gist.github.com/ctechols/ca1035271ad134841284
-autoload -Uz compinit 
+autoload -Uz compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
 	compinit;
 else
@@ -82,8 +82,8 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-export EDITOR=hx
-export VISUAL=hx
+export EDITOR=lvim
+export VISUAL=lvim
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

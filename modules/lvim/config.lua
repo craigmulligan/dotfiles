@@ -139,7 +139,7 @@ lvim.plugins = { {
 
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
-  { command = "eslint", filetypes = { "typescript", "typescriptreact" } }
+  { command = "eslint_d", filetypes = { "typescript", "typescriptreact" } }
 }
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
