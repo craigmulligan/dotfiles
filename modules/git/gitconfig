@@ -35,7 +35,6 @@
 	authors = "!f() { git log --all --format='%aN <%cE>' | sort -u; }; f"
 [commit]
 	template = ~/.gitdefaultcommit
-	gpgsign = true
 [merge]
 	tool = lvim -d
 	conflictstyle = merge

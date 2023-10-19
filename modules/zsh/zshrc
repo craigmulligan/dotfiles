@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
-export ZSH=/home/hobochild/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -138,27 +138,15 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd 'vv' edit-command-line
 
-export $(cat $HOME/.env | xargs)
+# export $(cat $HOME/.env | xargs)
 
 # Needed for docker dbus permissions
-alias sudo='sudo -E env "PATH=$PATH"'
-export DENO_INSTALL="/home/hobochild/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-export FLYCTL_INSTALL="/home/hobochild/.fly"
-export PATH="$FLYCTL_INSTALL/bin::$PATH"
-export PATH="$HOME/.cargo/env::$PATH"
-export PATH="$HOME/homebrew/bin/::$PATH"
-export PATH="$HOME/balena:$PATH"
-source "$HOME/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"
-
+export PATH="$PATH:$HOME/.local/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-alias bfg='java -jar /usr/local/bin/bfg.jar'
-
-export LTEX_GLOBAL_STORAGE_PATH="$HOME/.config/ltex/"
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion

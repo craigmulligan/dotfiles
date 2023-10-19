@@ -1,9 +1,12 @@
 lvim.format_on_save = true
 
-lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
-lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
-lvim.keys.normal_mode["<S-j>"] = ""
+-- unbind K so we can map it to tab switches
+lvim.lsp.buffer_mappings.normal_mode['K'] = nil
+lvim.lsp.buffer_mappings.normal_mode['gd'] = { vim.lsp.buf.hover, "Show documentation" }
 lvim.keys.insert_mode["jk"] = "<ESC>"
+lvim.keys.normal_mode["<S-j>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<S-k>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<S-x>"] = ":BufferKill<CR>"
 
 
 -- -- Trouble.nvim --
@@ -105,21 +108,6 @@ lvim.plugins = { {
       }
     end
   end
-},
-  {
-    -- popup --
-    "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function()
-      require "lsp_signature".setup()
-    end
-  }, {
-  -- search & replace --
-  "windwp/nvim-spectre",
-  event = "BufRead",
-  config = function()
-    require("spectre").setup()
-  end,
 }, {
   -- better quickfix window --
   "folke/trouble.nvim",
@@ -133,6 +121,10 @@ lvim.plugins = { {
   dependencies = "nvim-lua/plenary.nvim",
 }, {
   "tpope/vim-surround",
+}, {
+  "nvim-treesitter/nvim-treesitter-textobjects",
+  after = "nvim-treesitter",
+  dependencies = "nvim-treesitter/nvim-treesitter",
 } }
 
 
