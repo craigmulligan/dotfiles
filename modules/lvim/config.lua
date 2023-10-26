@@ -2,7 +2,7 @@ lvim.format_on_save = true
 
 -- unbind K so we can map it to tab switches
 lvim.lsp.buffer_mappings.normal_mode['K'] = nil
-lvim.lsp.buffer_mappings.normal_mode['gd'] = { vim.lsp.buf.hover, "Show documentation" }
+lvim.lsp.buffer_mappings.normal_mode['gq'] = { vim.lsp.buf.hover, "Show documentation" }
 lvim.keys.insert_mode["jk"] = "<ESC>"
 lvim.keys.normal_mode["<S-j>"] = ":BufferLineCyclePrev<CR>"
 lvim.keys.normal_mode["<S-k>"] = ":BufferLineCycleNext<CR>"
@@ -125,6 +125,10 @@ lvim.plugins = { {
   "nvim-treesitter/nvim-treesitter-textobjects",
   after = "nvim-treesitter",
   dependencies = "nvim-treesitter/nvim-treesitter",
+}, {
+  'akinsho/git-conflict.nvim',
+  version = "*",
+  config = true
 } }
 
 
