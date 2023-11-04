@@ -2,11 +2,17 @@ lvim.format_on_save = true
 
 -- unbind K so we can map it to tab switches
 lvim.lsp.buffer_mappings.normal_mode['K'] = nil
-lvim.lsp.buffer_mappings.normal_mode['gq'] = { vim.lsp.buf.hover, "Show documentation" }
+lvim.lsp.buffer_mappings.normal_mode['H'] = { vim.lsp.buf.hover, "Show documentation" }
 lvim.keys.insert_mode["jk"] = "<ESC>"
 lvim.keys.normal_mode["<S-j>"] = ":BufferLineCyclePrev<CR>"
 lvim.keys.normal_mode["<S-k>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-x>"] = ":BufferKill<CR>"
+
+-- -- unbind default nav ---
+lvim.keys.normal_mode["<M-h>"] = "<C-w>h"
+lvim.keys.normal_mode["<M-j>"] = "<C-w>j"
+lvim.keys.normal_mode["<M-k>"] = "<C-w>k"
+lvim.keys.normal_mode["<M-l>"] = "<C-w>l"
 
 
 -- -- Trouble.nvim --
