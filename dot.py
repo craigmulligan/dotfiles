@@ -1,7 +1,8 @@
+#!/usr/local/bin/python3
 import os
 
 # Source folder containing the files you want to symlink
-source_folder = "./src"
+source_folder = os.path.abspath("./src")
 
 # Destination folder (your home directory)
 destination_folder = os.path.expanduser("~")
@@ -43,4 +44,3 @@ if not os.path.exists(destination_folder):
 create_symlinks(source_folder, destination_folder)
 
 print("All symlinks and directories created successfully, overwriting existing files if necessary.")
-

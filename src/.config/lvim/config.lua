@@ -14,6 +14,8 @@ lvim.keys.normal_mode["<M-j>"] = "<C-w>j"
 lvim.keys.normal_mode["<M-k>"] = "<C-w>k"
 lvim.keys.normal_mode["<M-l>"] = "<C-w>l"
 
+-- show dotfiles
+lvim.builtin.nvimtree.setup.filters.dotfiles = false
 
 -- -- Trouble.nvim --
 lvim.builtin.which_key.mappings["t"] = {
