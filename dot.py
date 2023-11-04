@@ -1,0 +1,46 @@
+import os
+
+# Source folder containing the files you want to symlink
+source_folder = "./src"
+
+# Destination folder (your home directory)
+destination_folder = os.path.expanduser("~")
+
+# Function to create symlinks for files in a directory
+def create_symlinks(src_dir, dest_dir):
+    for item in os.listdir(src_dir):
+        src_item = os.path.join(src_dir, item)
+        dest_item = os.path.join(dest_dir, item)
+
+        if os.path.islink(dest_item):
+            # If a symlink already exists at the destination, remove it
+            os.unlink(dest_item)
+
+        if os.path.isfile(src_item):
+            # If it's a regular file, remove the existing file (if any) and create a symlink
+            if os.path.exists(dest_item):
+                os.remove(dest_item)
+            os.symlink(src_item, dest_item)
+            print(f"Symlink created: {dest_item}")
+        elif os.path.isdir(src_item):
+            # If it's a directory, create a corresponding directory in the destination directory
+            os.makedirs(dest_item, exist_ok=True)
+            print(f"Created directory: {dest_item}")
+            # Recursively call the function to handle files in the subdirectory
+            create_symlinks(src_item, dest_item)
+
+# Check if the source folder exists
+if not os.path.exists(source_folder):
+    print(f"Source folder does not exist: {source_folder}")
+    exit(1)
+
+# Check if the destination folder exists
+if not os.path.exists(destination_folder):
+    print(f"Destination folder does not exist: {destination_folder}")
+    exit(1)
+
+# Call the function to create symlinks and handle subdirectories
+create_symlinks(source_folder, destination_folder)
+
+print("All symlinks and directories created successfully, overwriting existing files if necessary.")
+
