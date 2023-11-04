@@ -1,1 +1,1 @@
-SYMLINK alacritty.toml .alacritty.toml
+SYMLINK tmux.conf .tmux.conf
