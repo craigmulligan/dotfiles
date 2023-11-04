@@ -1,3 +1,0 @@
-SYMLINK config.toml .config/helix/config.toml
-SYMLINK languages.toml .config/helix/languages.toml
-SYMLINK lf-pick .config/helix/lf-pick
