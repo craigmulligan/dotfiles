@@ -33,6 +33,7 @@
 	delete-remote-tag = "!f() { git push origin :refs/tags/$1; }; f"
 	clean-branches = "!f() { git branch | grep -v "master" | xargs git branch -D; }; f"
 	authors = "!f() { git log --all --format='%aN <%cE>' | sort -u; }; f"
+	fpush = push
 [commit]
 	template = ~/.gitdefaultcommit
 [merge]
@@ -55,3 +56,6 @@
 	helper = cache --timeout=3600
 [diff]
 	external = difft
+[rerere]
+	enabled = true
+	autoUpdate = true

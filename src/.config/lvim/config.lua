@@ -14,6 +14,14 @@ lvim.keys.normal_mode["<M-j>"] = "<C-w>j"
 lvim.keys.normal_mode["<M-k>"] = "<C-w>k"
 lvim.keys.normal_mode["<M-l>"] = "<C-w>l"
 
+
+-- -- smart textobjects https://github.com/LunarVim/LunarVim/issues/4298#issuecomment-1647163077
+lvim.keys.normal_mode["vaf"] = { ":TSTextobjectSelect @function.outer<cr>", { desc = "Function Outer" } }
+lvim.keys.normal_mode["vif"] = { ":TSTextobjectSelect @function.inner<cr>", { desc = "Function Inner" } }
+lvim.keys.normal_mode["vac"] = { ":TSTextobjectSelect @class.outer<cr>", { desc = "Class Outer" } }
+lvim.keys.normal_mode["vic"] = { ":TSTextobjectSelect @class.inner<cr>", { desc = "Class Outer" } }
+lvim.keys.normal_mode["vas"] = { ":TSTextobjectSelect @scope<cr>", { desc = "Language Scope" } }
+
 -- -- Trouble.nvim --
 lvim.builtin.which_key.mappings["t"] = {
   name = "Diagnostics",
@@ -33,16 +41,24 @@ lvim.builtin.which_key.mappings["gy"] = {
 }
 
 
--- lvim.builtin.dap.active = true
+lvim.builtin.dap.active = true
 lvim.builtin.which_key.setup.plugins.presets.operators = true
 lvim.builtin.which_key.setup.plugins.presets.motions = true
 lvim.builtin.which_key.setup.plugins.presets.text_objects = true
 lvim.builtin.which_key.setup.plugins.presets.nav = true
+lvim.builtin.which_key.setup.plugins.presets.z = true
 
+vim.opt.cmdheight = 2         -- more space in the neovim command line for displaying messages
+vim.opt.relativenumber = true -- relative line numbers
 vim.opt.wrap = true
-vim.opt.foldmethod = "expr"                     -- folding set to "expr" for treesitter based folding
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
-vim.opt.foldlevel = 99                          -- set to unfold everything by default
+-- folding powered by treesitter
+-- https://github.com/nvim-treesitter/nvim-treesitter#folding
+-- look for foldenable: https://github.com/neovim/neovim/blob/master/src/nvim/options.lua
+-- Vim cheatsheet, look for folds keys: https://devhints.io/vim
+vim.opt.foldmethod = "expr"                     -- default is "normal"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- default is ""
+vim.opt.foldenable = true -- if this option is true and fold method option is other than normal, every time a document is opened everything will be folded.
+vim.opt.foldlevel=99
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
@@ -68,41 +84,35 @@ lvim.plugins = { {
   "ggandor/lightspeed.nvim",
   event = "BufRead",
 }, {
-  "mxsdev/nvim-dap-vscode-js",
-  dependencies = { "mfussenegger/nvim-dap" },
+  --- https://theosteiner.de/debugging-javascript-frameworks-in-neovim
+  "mfussenegger/nvim-dap",
+  lazy = true,
+  dependencies = {
+    "rcarriga/nvim-dap-ui",
+    "mxsdev/nvim-dap-vscode-js",
+    {
+      "microsoft/vscode-js-debug",
+      version = "1.x",
+      build = "npm i && npm run compile vsDebugServerBundle && mv dist out"
+    }
+  },
+  keys = {
+    -- normal mode is default
+    { "<leader>d", function() require 'dap'.toggle_breakpoint() end },
+    { "<leader>c", function() require 'dap'.continue() end },
+    { "<C-'>",     function() require 'dap'.step_over() end },
+    { "<C-;>",     function() require 'dap'.step_into() end },
+    { "<C-:>",     function() require 'dap'.step_out() end },
+  },
   config = function()
     require("dap-vscode-js").setup({
-      debugger_path = "/home/hobochild/.local/share/lunarvim/site/pack/lazy/opt/vscode-js-debug",  -- Path to vscode-js-debug installation.
-      adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }, -- which adapters to register in nvim-dap
-      -- log_file_path = "(stdpath cache)/dap_vscode_js.log" -- Path for file logging
-      -- log_file_level = false -- Logging level for output to file. Set to false to disable file logging.
-      -- log_console_level = vim.log.levels.ERROR -- Logging level for output to console. Set to false to disable console output.
+      debugger_path = "/Users/craigmulligan/.local/share/lunarvim/site/pack/lazy/opt/vscode-js-debug",
+      adapters = { 'pwa-node' },
     })
+    require("dapui").setup()
 
     for _, language in ipairs({ "typescript", "javascript" }) do
       require("dap").configurations[language] = {
-        {
-          type = "pwa-node",
-          request = "launch",
-          name = "Debug Jest Tests",
-          -- trace = true, -- include debugger info
-          runtimeExecutable = "node",
-          runtimeArgs = {
-            "./node_modules/.bin/react-scripts",
-            "test",
-          },
-          rootPath = "${workspaceFolder}",
-          cwd = "${workspaceFolder}",
-          console = "integratedTerminal",
-          internalConsoleOptions = "neverOpen",
-        },
-        {
-          type = "pwa-node",
-          request = "launch",
-          name = "Launch file",
-          program = "${file}",
-          cwd = "${workspaceFolder}",
-        },
         {
           type = "pwa-node",
           request = "attach",
@@ -112,6 +122,13 @@ lvim.plugins = { {
         }
       }
     end
+    require("dapui").setup()
+    local dap, dapui = require("dap"), require("dapui")
+    dap.listeners.after.event_initialized["dapui_config"] = function()
+      dapui.open({ reset = true })
+    end
+    dap.listeners.before.event_terminated["dapui_config"] = dapui.close
+    dap.listeners.before.event_exited["dapui_config"] = dapui.close
   end
 }, {
   -- better quickfix window --
@@ -134,6 +151,22 @@ lvim.plugins = { {
   'akinsho/git-conflict.nvim',
   version = "*",
   config = true
+}, {
+  'yorickpeterse/nvim-pqf',
+  config = function()
+    require('pqf').setup({
+      signs = {
+        error = 'E',
+        warning = 'W',
+        info = 'I',
+        hint = 'H'
+      },
+      show_multiple_lines = true,
+      -- How long filenames in the quickfix are allowed to be. 0 means no limit.
+      -- Filenames above this limit will be truncated from the beginning with [...]
+      max_filename_length = 0,
+    })
+  end
 } }
 
 
@@ -154,3 +187,15 @@ formatters.setup {
     filetypes = { "typescript", "typescriptreact", "lua" },
   },
 }
+
+-- table.insert(lvim.plugins, {
+--   "zbirenbaum/copilot-cmp",
+--   event = "InsertEnter",
+--   dependencies = { "zbirenbaum/copilot.lua" },
+--   config = function()
+--     vim.defer_fn(function()
+--       require("copilot").setup()     -- https://github.com/zbirenbaum/copilot.lua/blob/master/README.md#setup-and-configuration
+--       require("copilot_cmp").setup() -- https://github.com/zbirenbaum/copilot-cmp/blob/master/README.md#configuration
+--     end, 100)
+--   end,
+-- })
