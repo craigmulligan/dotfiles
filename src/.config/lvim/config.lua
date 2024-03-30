@@ -84,7 +84,6 @@ local js_based_languages = {
   "javascript",
   "typescriptreact",
   "javascriptreact",
-  "vue",
 }
 
 -- PLUGINS ---
@@ -137,7 +136,8 @@ lvim.plugins = { {
     config = function()
       local dap = require("dap")
 
-      vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
+
+      -- vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
       -- for name, sign in pairs(Config.icons.dap) do
       --   sign = type(sign) == "table" and sign or { sign }
@@ -192,32 +192,19 @@ lvim.plugins = { {
             sourceMaps = true,
             userDataDir = false,
           },
-          -- Divider for the launch.json derived configs
-          -- {
-          --   name = "----- ↓ launch.json configs ↓ -----",
-          --   type = "",
-          --   request = "launch",
-          -- },
         }
       end
+      if vim.fn.filereadable(".vscode/launch.json") then
+        print("Hello, world!")
+        local dap_vscode = require("dap.ext.vscode")
+
+        dap_vscode.load_launchjs(nil, {
+          ["pwa-node"] = js_based_languages,
+          ["chrome"] = js_based_languages,
+          ["pwa-chrome"] = js_based_languages,
+        })
+      end
     end,
-    keys = {
-      {
-        "<leader>da",
-        function()
-          if vim.fn.filereadable(".vscode/launch.json") then
-            local dap_vscode = require("dap.ext.vscode")
-            dap_vscode.load_launchjs(nil, {
-              ["pwa-node"] = js_based_languages,
-              ["chrome"] = js_based_languages,
-              ["pwa-chrome"] = js_based_languages,
-            })
-          end
-          require("dap").continue()
-        end,
-        desc = "Run with Args",
-      },
-    },
     dependencies = {
       -- Install the vscode-js-debug adapter
       {
