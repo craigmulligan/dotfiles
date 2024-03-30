@@ -193,29 +193,15 @@ lvim.plugins = { {
             userDataDir = false,
           },
           -- Divider for the launch.json derived configs
-          {
-            name = "----- ↓ launch.json configs ↓ -----",
-            type = "",
-            request = "launch",
-          },
+          -- {
+          --   name = "----- ↓ launch.json configs ↓ -----",
+          --   type = "",
+          --   request = "launch",
+          -- },
         }
       end
     end,
     keys = {
-      {
-        "<leader>dO",
-        function()
-          require("dap").step_out()
-        end,
-        desc = "Step Out",
-      },
-      {
-        "<leader>do",
-        function()
-          require("dap").step_over()
-        end,
-        desc = "Step Over",
-      },
       {
         "<leader>da",
         function()
