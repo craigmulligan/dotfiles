@@ -22,6 +22,7 @@ lvim.keys.normal_mode["vac"] = { ":TSTextobjectSelect @class.outer<cr>", { desc 
 lvim.keys.normal_mode["vic"] = { ":TSTextobjectSelect @class.inner<cr>", { desc = "Class Outer" } }
 lvim.keys.normal_mode["vas"] = { ":TSTextobjectSelect @scope<cr>", { desc = "Language Scope" } }
 
+
 -- -- Trouble.nvim --
 lvim.builtin.which_key.mappings["t"] = {
   name = "Diagnostics",
@@ -47,6 +48,12 @@ lvim.builtin.which_key.setup.plugins.presets.motions = true
 lvim.builtin.which_key.setup.plugins.presets.text_objects = true
 lvim.builtin.which_key.setup.plugins.presets.nav = true
 lvim.builtin.which_key.setup.plugins.presets.z = true
+
+
+lvim.builtin.which_key.mappings.s.t = {
+  require('telescope').extensions.live_grep_args.live_grep_args, "Live grep args",
+}
+
 
 vim.opt.cmdheight = 2         -- more space in the neovim command line for displaying messages
 vim.opt.relativenumber = true -- relative line numbers
@@ -91,11 +98,21 @@ lvim.plugins = { {
   -- Easy motion like --
   "ggandor/lightspeed.nvim",
   event = "BufRead",
-}, {
-  -- better quickfix window --
-  "folke/trouble.nvim",
-  cmd = "TroubleToggle",
-}, {
+},
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      { "nvim-telescope/telescope-live-grep-args.nvim" },
+    },
+    config = function()
+      require("telescope").load_extension("live_grep_args")
+    end
+  },
+  {
+    -- better quickfix window --
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  }, {
   -- markdown tables --
   "dhruvasagar/vim-table-mode"
 }, {
