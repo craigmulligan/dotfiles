@@ -55,7 +55,9 @@ lvim.builtin.which_key.mappings.s.t = {
 }
 
 
-vim.opt.cmdheight = 2         -- more space in the neovim command line for displaying messages
+vim.opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
 vim.opt.relativenumber = true -- relative line numbers
 vim.opt.wrap = true
 -- folding powered by treesitter
