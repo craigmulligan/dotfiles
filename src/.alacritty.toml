@@ -4,10 +4,12 @@ import = [
 "~/.config/alacritty/catppuccin-frappe.toml",
 ]
 
-
 [window]
 option_as_alt = "Both"
 
 [font]
 normal.family = "Hack Nerd Font"
 size=12.0
+
+[env]
+TERM = "xterm-256color"
