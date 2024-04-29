@@ -1,5 +1,11 @@
 live_config_reload = true
 
 import = [
-"~/.config/alacritty/catppuccin-latte.toml",
+"~/.config/alacritty/catppuccin-frappe.toml",
 ]
+
+[font]
+normal.family = "JetBrainsMonoNF-Bold"
+bold.family = "JetBrainsMonoNF-ExtraBold"
+italic.family = "JetBrainsMonoNF-BoldItalic"
+bold.italic.family = "JetBrainsMonoNF-ExtraBoldItalic"
