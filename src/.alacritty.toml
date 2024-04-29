@@ -5,7 +5,5 @@ import = [
 ]
 
 [font]
-normal.family = "JetBrainsMonoNF-Bold"
-bold.family = "JetBrainsMonoNF-ExtraBold"
-italic.family = "JetBrainsMonoNF-BoldItalic"
-bold.italic.family = "JetBrainsMonoNF-ExtraBoldItalic"
+normal.family = "Hack Nerd Font"
+size=12.0
