@@ -168,3 +168,9 @@ if [ -f '/Users/craigmulligan/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/c
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/craigmulligan/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/craigmulligan/google-cloud-sdk/completion.zsh.inc'; fi
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
+export ZEIT_DB=~/.config/zeit.db
