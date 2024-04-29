@@ -1,6 +1,6 @@
 [core]
 	mergeoptions = --no-edit
-	editor = lvim
+	editor = nvim
 	autocrlf = input
 	whitespace = trailing-space,space-before-tab,indent-with-non-tab,cr-at-eol
 [user]
@@ -37,7 +37,7 @@
 [commit]
 	template = ~/.gitdefaultcommit
 [merge]
-	tool = lvim -d
+	tool = nvim -d
 	conflictstyle = merge
 [diff "hex"]
 	textconv = hexdump

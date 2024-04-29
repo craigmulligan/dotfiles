@@ -27,7 +27,7 @@ ZSH_THEME="shades-of-purple"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -83,8 +83,8 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-export EDITOR=lvim
-export VISUAL=lvim
+export EDITOR=nvim
+export VISUAL=nvim
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -113,8 +113,8 @@ alias ghv="gh repo view --web"
 alias vol="pavucontrol"
 alias cpr="copyq read"
 # alias nvim="lvim"
-alias vi="hx"
-alias iv="hx"
+alias vi="nvim"
+alias iv="nvim"
 alias gbs='git branch --sort=-committerdate'
 
 # Modern tools
