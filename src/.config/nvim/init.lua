@@ -265,7 +265,11 @@ require("lazy").setup({
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("nvim-tree").setup({})
+      require("nvim-tree").setup({
+        view = {
+          adaptive_size = true,
+        },
+      })
     end,
     keys = {
       { "<leader>st", ":NvimTreeToggle<CR>", { desc = "File Tree toggle" } },
@@ -275,12 +279,15 @@ require("lazy").setup({
   {
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
-      null_ls = require("null-ls")
+      local null_ls = require("null-ls")
+
       null_ls.setup({
         sources = {
           null_ls.builtins.diagnostics.eslint,
+          null_ls.builtins.diagnostics.ruff,
           null_ls.builtins.completion.spell,
           null_ls.builtins.formatting.prettier,
+          null_ls.builtins.formatting.black,
         },
       })
     end,
