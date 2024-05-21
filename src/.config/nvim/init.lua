@@ -276,6 +276,12 @@ require("lazy").setup({
     },
   },
   "yorickpeterse/nvim-pqf",
+  "nvim-treesitter/nvim-treesitter-context",
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+  },
   {
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
