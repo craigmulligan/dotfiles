@@ -255,6 +255,31 @@ require("lazy").setup({
       })
 
       vim.cmd.colorscheme("catppuccin")
+      local colors = require("catppuccin.palettes").get_palette() -- Default is 'latte'
+
+      -- Set vim spellcheck colors to use the yellow.
+      vim.cmd(
+        string.format(
+          [[
+        highlight clear SpellBad
+        highlight SpellBad gui=undercurl guifg=%s guisp=%s
+        highlight clear SpellCap
+        highlight SpellCap gui=undercurl guifg=%s guisp=%s
+        highlight clear SpellRare
+        highlight SpellRare gui=undercurl guifg=%s guisp=%s
+        highlight clear SpellLocal
+        highlight SpellLocal gui=undercurl guifg=%s guisp=%s
+      ]],
+          colors.yellow,
+          colors.yellow,
+          colors.yellow,
+          colors.yellow,
+          colors.yellow,
+          colors.yellow,
+          colors.yellow,
+          colors.yellow
+        )
+      )
     end,
   },
   {
@@ -289,7 +314,7 @@ require("lazy").setup({
 
       null_ls.setup({
         sources = {
-          null_ls.builtins.diagnostics.eslint,
+          null_ls.builtins.diagnostics.eslint_d,
           null_ls.builtins.diagnostics.ruff,
           null_ls.builtins.completion.spell,
           null_ls.builtins.formatting.prettier,
@@ -1015,6 +1040,12 @@ require("lazy").setup({
       lazy = "💤 ",
     },
   },
+})
+
+-- Enable spell checking for Markdown files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  command = "setlocal spell",
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
