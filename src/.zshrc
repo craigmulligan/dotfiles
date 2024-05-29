@@ -115,6 +115,7 @@ alias cpr="copyq read"
 # alias nvim="lvim"
 alias vi="nvim"
 alias iv="nvim"
+# latest git branchs
 alias gbs='git branch --sort=-committerdate'
 
 # Modern tools
