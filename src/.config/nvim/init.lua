@@ -308,23 +308,6 @@ require("lazy").setup({
     requires = "nvim-treesitter/nvim-treesitter",
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    config = function()
-      local null_ls = require("null-ls")
-
-      null_ls.setup({
-        sources = {
-          null_ls.builtins.diagnostics.eslint_d,
-          null_ls.builtins.diagnostics.ruff,
-          null_ls.builtins.completion.spell,
-          null_ls.builtins.formatting.prettier,
-          null_ls.builtins.formatting.black,
-        },
-      })
-    end,
-    requires = { "nvim-lua/plenary.nvim" },
-  },
-  {
     "akinsho/git-conflict.nvim",
     version = "v1.0.0",
     config = true,
@@ -680,7 +663,13 @@ require("lazy").setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
+        -- tsserver = {
+        --   settings = {
+        --     implicitProjectConfiguration = {
+        --       checkJs = true,
+        --     },
+        --   },
+        -- },
         --
 
         lua_ls = {
@@ -758,11 +747,11 @@ require("lazy").setup({
       formatters_by_ft = {
         lua = { "stylua" },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
+        python = { "black" },
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { { "prettierd", "prettier" } },
+        typescript = { { "prettierd", "prettier" } },
       },
     },
   },

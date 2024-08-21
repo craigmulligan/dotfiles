@@ -3,6 +3,7 @@ if [ "$TMUX" = "" ]; then tmux -u; fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -175,3 +176,7 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
 export ZEIT_DB=~/.config/zeit.db
+export PATH=$PATH:$HOME/.maestro/bin
+# Added by LM Studio CLI tool (lms)
+export PATH="$PATH:/Users/craigmulligan/.cache/lm-studio/bin"
+export PATH="/opt/homebrew/opt/mysql-client@8.4/bin:$PATH"
