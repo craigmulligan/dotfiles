@@ -101,8 +101,6 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 alias reload="omz reload"
 alias ll="ls -l"
 alias tele="telepresence"
-alias venv="virtualenv venv"
-alias activate="source venv/bin/activate"
 alias kop='function _kill_on_port(){ fuser -k $1/tcp };_kill_on_port'
 alias xclip='xclip -sel clip'
 alias pom="sleep 2500 && zenity --warning --text='25 minutes passed'"
@@ -142,7 +140,7 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd 'vv' edit-command-line
 
-# export $(cat $HOME/.env | xargs)
+export $(cat $HOME/.env | xargs)
 
 # Needed for docker dbus permissions
 export PATH="$PATH:$HOME/.local/bin"
