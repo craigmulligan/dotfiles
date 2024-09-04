@@ -1,3 +1,4 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
 if [ "$TMUX" = "" ]; then tmux -u; fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -71,11 +72,14 @@ else
 	compinit -C;
 fi;
 
+export AUTOSWITCH_DEFAULT_PYTHON=python3.11
+
 plugins=(
   git
   history-substring-search
   zsh-completions
   wd
+  # autoswitch_virtualenv
 )
 fpath+=~/.zfunc
 
@@ -116,9 +120,11 @@ alias vi="nvim"
 alias iv="nvim"
 # latest git branchs
 alias gbs='git branch --sort=-committerdate'
+alias pm='pnpm'
 
 # Modern tools
 alias bcat="batcat"
+alias svenv="source .venv/bin/activate"
 
 # Make sure pipenv global dir is findable
 export PATH="${HOME}/.local/bin:$PATH"

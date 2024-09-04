@@ -992,28 +992,28 @@ require("lazy").setup({
       opts = {},
     },
   },
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    opts = {
-      provider = "openai",
-      -- add any opts here
-    },
-    dependencies = {
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      --- The below is optional, make sure to setup it properly if you have lazy=true
-      {
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
-    },
-  },
+  -- {
+  --   "yetone/avante.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     provider = "openai",
+  --     -- add any opts here
+  --   },
+  --   dependencies = {
+  --     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+  --     "stevearc/dressing.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "MunifTanjim/nui.nvim",
+  --     --- The below is optional, make sure to setup it properly if you have lazy=true
+  --     {
+  --       "MeanderingProgrammer/render-markdown.nvim",
+  --       opts = {
+  --         file_types = { "markdown", "Avante" },
+  --       },
+  --       ft = { "markdown", "Avante" },
+  --     },
+  --   },
+  -- },
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
@@ -1033,7 +1033,7 @@ require("lazy").setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  { import = "custom.plugins" },
+  -- { import = "custom.plugins" },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
