@@ -406,7 +406,20 @@ require("lazy").setup({
         end,
       },
       { "nvim-telescope/telescope-ui-select.nvim" },
-
+      {
+        "princejoogie/dir-telescope.nvim",
+        -- telescope.nvim is a required dependency
+        requires = { "nvim-telescope/telescope.nvim" },
+        config = function()
+          require("dir-telescope").setup({
+            -- these are the default options set
+            hidden = true,
+            no_ignore = false,
+            show_preview = true,
+            follow_symlinks = false,
+          })
+        end,
+      },
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
     },
@@ -452,9 +465,11 @@ require("lazy").setup({
       -- Enable Telescope extensions if they are installed
       pcall(require("telescope").load_extension, "fzf")
       pcall(require("telescope").load_extension, "ui-select")
+      pcall(require("telescope").load_extension, "dir")
 
       -- See `:help telescope.builtin`
       local builtin = require("telescope.builtin")
+      local extensions = require("telescope").extensions
       vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
       vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
       vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
@@ -465,6 +480,9 @@ require("lazy").setup({
       vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
       vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+
+      vim.keymap.set("n", "<leader>spg", extensions.dir.live_grep, { desc = "[S]earch [P]ath [G]rep" })
+      vim.keymap.set("n", "<leader>spf", extensions.dir.find_files, { desc = "[S]earch [P]ath [F]iles" })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set("n", "<leader>/", function()
@@ -483,14 +501,8 @@ require("lazy").setup({
           prompt_title = "Live Grep in Open Files",
         })
       end, { desc = "[S]earch [/] in Open Files" })
-
-      -- Shortcut for searching your Neovim configuration files
-      vim.keymap.set("n", "<leader>sn", function()
-        builtin.find_files({ cwd = vim.fn.stdpath("config") })
-      end, { desc = "[S]earch [N]eovim files" })
     end,
   },
-
   { -- LSP Configuration & Plugins
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -561,6 +573,9 @@ require("lazy").setup({
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
           map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+          map("gdv", function()
+            require("telescope.builtin").lsp_definitions({ jump_type = "vsplit", reuse_win = true })
+          end, "[G]oto [D]efinition [V]split")
 
           -- Find references for the word under your cursor.
           map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
