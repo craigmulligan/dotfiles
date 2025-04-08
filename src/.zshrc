@@ -145,7 +145,7 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd 'vv' edit-command-line
 
-export $(cat $HOME/.env | xargs)
+# dotenv set -f $HOME/.env
 
 # Needed for docker dbus permissions
 export PATH="$PATH:$HOME/.local/bin"

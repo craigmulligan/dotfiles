@@ -313,19 +313,12 @@ require("lazy").setup({
     config = true,
   },
   {
-    "ruifm/gitlinker.nvim",
-    requires = "nvim-lua/plenary.nvim",
+    "linrongbin16/gitlinker.nvim",
+    cmd = "GitLink",
+    opts = {},
     keys = {
-      {
-        "gy",
-        function()
-          require("gitlinker").get_buf_range_url(
-            "n",
-            { action_callback = require("gitlinker.actions").open_in_browser }
-          )
-        end,
-        { desc = "Open on github" },
-      },
+      { "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
+      { "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
     },
   },
   -- Here is a more advanced example where we pass configuration
