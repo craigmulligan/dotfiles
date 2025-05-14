@@ -666,6 +666,7 @@ require("lazy").setup({
       local servers = {
         -- clangd = {},
         -- gopls = {},
+        -- pyright handled separately below
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -712,12 +713,18 @@ require("lazy").setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         "stylua", -- Used to format Lua code
+        "pyright", -- Used for Python LSP
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
       require("mason-lspconfig").setup({
         handlers = {
           function(server_name)
+            -- Skip pyright as we handle it separately
+            if server_name == "pyright" then
+              return
+            end
+            
             local server = servers[server_name] or {}
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
@@ -726,6 +733,35 @@ require("lazy").setup({
             require("lspconfig")[server_name].setup(server)
           end,
         },
+      })
+      
+      -- Custom pyright setup with venv detection
+      local lspconfig = require("lspconfig")
+      lspconfig.pyright.setup({
+        capabilities = capabilities,
+        settings = {
+          python = {
+            analysis = {
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+              diagnosticMode = "workspace",
+            }
+          }
+        },
+        -- Try to find pyrightconfig.json in the project root
+        -- If not found, fall back to user config
+        on_new_config = function(new_config, new_root_dir)
+          -- Check if pyrightconfig.json exists in the project root
+          local config_path = new_root_dir .. "/pyrightconfig.json"
+          local f = io.open(config_path, "r")
+          if f then
+            f:close()
+            -- Config exists, use it
+          else
+            -- Config doesn't exist, create symlink from dotfiles
+            vim.fn.system("ln -sf " .. vim.fn.expand("~/Code/dotfiles/pyrightconfig.json") .. " " .. config_path)
+          end
+        end
       })
     end,
   },
