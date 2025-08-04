@@ -183,3 +183,7 @@ export PATH=$PATH:$HOME/.maestro/bin
 # Added by LM Studio CLI tool (lms)
 export PATH="$PATH:/Users/craigmulligan/.cache/lm-studio/bin"
 export PATH="/opt/homebrew/opt/mysql-client@8.4/bin:$PATH"
+
+# opencode
+export PATH=/Users/craigmulligan/.opencode/bin:$PATH
+export PATH="$NVM_BIN:$PATH"
