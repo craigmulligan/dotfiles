@@ -120,6 +120,7 @@ alias iv="nvim"
 # latest git branchs
 alias gbs='git branch --sort=-committerdate'
 alias pm='pnpm'
+alias dco='docker-compose'
 
 # Modern tools
 alias bcat="batcat"
@@ -187,3 +188,5 @@ export PATH="/opt/homebrew/opt/mysql-client@8.4/bin:$PATH"
 # opencode
 export PATH=/Users/craigmulligan/.opencode/bin:$PATH
 export PATH="$NVM_BIN:$PATH"
+export DYLD_FALLBACK_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+export DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"
